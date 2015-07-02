@@ -19,3 +19,9 @@
 
 * add a Logout button to attach to a template or layout
 * add a test 04_logout.t to check successful logout and can't access protected/*
+
+## HTTPS
+
+* change route to force login page to run under SSL _only_ 
+** don't give away passwords in plain text
+* add test to check that http access to login page redirected to https 05_https.t
