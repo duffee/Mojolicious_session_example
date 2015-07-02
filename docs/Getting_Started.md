@@ -19,11 +19,11 @@ and see the Welcome page.
 ## Testing the application
 
 We will include test files to verify the application works as described
-in the t/ directory.  You can run any test with
+in the **t/** directory.  You can run any test with
 
 	prove -Ilib t/filename
 
-The **-Ilib** adds the application library directory to your path and prove
+The **-Ilib** adds the application library directory to your path and **prove**
 runs the test harness.  To verify that Mojolicious has successfully 
 started up (other than using a browser), run
 
