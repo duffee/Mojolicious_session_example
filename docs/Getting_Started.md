@@ -9,4 +9,6 @@ we'll start from.
 ## Running Mojolicious
 
 	cd mytool
-	morbo
+	morbo script/mytool
+
+open your browser at http://localhost:3000 and see the Welcome page.
