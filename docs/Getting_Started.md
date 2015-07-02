@@ -12,3 +12,20 @@ we'll start from.
 	morbo script/mytool
 
 open your browser at http://localhost:3000 and see the Welcome page.
+
+## Testing the application
+
+We will include test files to verify the application works as described
+in the t/ directory.  You can run any test with
+	prove -Ilib t/filename
+The -Ilib adds the application library directory to your path and prove
+runs the test harness.  To verify that Mojolicious has successfully 
+started up (other than using a browser), run
+	prove -Ilib t/basic.t
+which checks the welcome page and the perldoc pages are there.
+
+## Documentation
+
+Mojolicious ships with all its documention available through the browser
+when morbo is running.  Use http://localhost:3000/perldoc to access the
+Guide.

@@ -1,7 +1,5 @@
 # List of things To Do
 
-* add a test to show morbo is working 00_getting_started.t
-
 ## Login
 
 * add a login page to the app that has Username and Password fields
