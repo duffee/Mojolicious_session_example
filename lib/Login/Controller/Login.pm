@@ -9,4 +9,11 @@ sub start {
   $self->render(msg => 'Creating a Login Page');
 }
 
+sub login {
+  my $self = shift;
+
+  # Render template "login/login.html.ep" with message
+  $self->render(msg => '');
+}
+
 1;
