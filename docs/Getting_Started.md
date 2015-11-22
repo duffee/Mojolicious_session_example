@@ -2,7 +2,7 @@
 
 At the command line, type
 ```
-mojo generate MyTool
+mojo generate app MyTool
 ```
 This will create the directory mytool and auto-generate a set of files which
 we'll start from.
@@ -40,6 +40,11 @@ when morbo is running.
 Use 
 [localhost:3000/perldoc](http://localhost:3000/perldoc "Mojolicious Guides") 
 to access the Guide.
+
+To access the online help for the mojo command, use
+```
+mojo --help
+```
 
 # Next Step
 
