@@ -28,3 +28,8 @@
 * change route to force login page to run under SSL _only_ 
 ..* don't give away passwords in plain text
 * add test to check that http access to login page redirected to https 05_https.t
+
+# Suggestions for the future
+
+* put the instructions in the web pages so that the browser becomes live documentation
+

@@ -50,3 +50,7 @@ mojo --help
 
 Having created the framework for your app, the next step is
 to create a login page following the instructions in [Login](Login.md)
+
+These instructions don't assume that you've followed all the preceding
+instructions, so remember to kill the server with Control-C before moving
+on to the next step and starting a new server.
