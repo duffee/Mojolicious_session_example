@@ -33,6 +33,11 @@ prove -Ilib t/basic.t
 ```
 which checks the welcome page and the perldoc pages are there.
 
+To run the whole test suite, use the app with the test option like so
+```
+script/getting_started test
+```
+
 ## Documentation
 
 Mojolicious ships with all its documention available through the browser

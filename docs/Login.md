@@ -150,7 +150,7 @@ Make sure the Login page is rendered correctly.
 Add `$t->get_ok('/login')->status_is(200)->content_like(qr/Username/i);`
 to `t/basic.t` and run
 ```
-script/login test t/basic.t		# this doesn't work on my machine - why?
+script/login test t/basic.t
 ```
 
 # Next Step
@@ -162,5 +162,5 @@ using the instructions in [Authenticate](Authenticate.md)
 ## More information
 
 More on rendering and validating forms can be found on 
-[localhost:3000/perldoc/Mojolicious/Guides/Rendering]
-(http://localhost:3000/perldoc/Mojolicious/Guides/Rendering 'Mojolicious::Guides::Rendering')
+[Mojolicious::Guides::Rendering]
+(http://localhost:3000/perldoc/Mojolicious/Guides/Rendering)
