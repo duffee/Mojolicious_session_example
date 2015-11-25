@@ -15,6 +15,7 @@ sub startup {
   $r->get('/')->to('login#start');
 
   $r->get('/login')->to('login#login');
+  $r->post('/login')->name('do_login')->to('Login#on_user_login');
 }
 
 1;

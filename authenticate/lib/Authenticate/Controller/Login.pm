@@ -16,4 +16,30 @@ sub login {
   $self->render(msg => 'Login required');
 }
 
+sub check_credentials {
+	my ($username, $password) = @_;
+
+	my %password_for = ( daniel => 'sempere',
+					julian => 'carax',
+					nuria => 'monfort',
+		);
+
+	return ( $password_for{$username} eq $password );
+}
+
+sub on_user_login {
+  my $self = shift;
+
+  my $username = $self->param('username');
+  my $password = $self->param('password');
+
+  if (check_credentials($username, $password)) {
+	return $self->render(user => $username, template => 'login/welcome');
+  }
+  else {
+    return $self->render(text => '<h2>Login failed</h2><a href="/login">Try again</a>', status => 403);
+  }
+}
+	
+
 1;

@@ -1,0 +1,6 @@
+% layout 'default';
+% title 'Authenticate example - Page 3';
+<h2>Welcome, <%= ucfirst $user %>!</h2>
+You have logged in successfully.
+<p>
+Time to move on to the next step, Sessions.
