@@ -4,13 +4,14 @@
 
 ## Login
 
-* add a login page to the app that has Username and Password fields
-* show the changes required to add the route and a template
+* ~~add a login page to the app that has Username and Password fields~~
+* ~~show the changes required to add the route and a template~~
 * add a test for login success and failure 01_login.t
 * change secret passphrase
 
 ## Protected Pages
 
+* add session handling
 * add open pages to a route under open/* - pages that can be seen without logging in
 * add a test 02_open_pages.t
 * add protected pages to a route under protected/*
@@ -28,6 +29,10 @@
 * change route to force login page to run under SSL _only_ 
 ..* don't give away passwords in plain text
 * add test to check that http access to login page redirected to https 05_https.t
+
+## LDAP
+
+* add a sub that uses LDAP for authentication
 
 # Suggestions for the future
 
