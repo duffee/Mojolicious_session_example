@@ -104,6 +104,18 @@ checks the return status and that we are Welcomed.  The third test posts invalid
 credentials, checks that we get a 403 Authorization failed status and that
 we know the login failed.
 
+# Change the Secret Passphrase
+(move this to the next step?)
+
+Now that we're sending passwords across the net, it's advisable to change the Secret Passphrase
+that is used in security features such as signed cookies, which we're using to keep sessions.
+Add
+```
+$self->secrets(['El Cementerio de los Libros Olvidados']);
+```
+to `lib/Authenticate.pm`.
+
+
 # Next Step
 
 Now that we can successfully check credentials, let's make sure that we can maintain sessions
