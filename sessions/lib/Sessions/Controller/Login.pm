@@ -34,6 +34,10 @@ sub on_user_login {
   my $password = $self->param('password');
 
   if (check_credentials($username, $password)) {
+	$self->session(logged_in => 1);				# set the logged_in flag
+	$self->session(username => $username);		# keep a copy of the username
+	$self->session(expiration => 600);			# expire this session in 10 minutes
+
 	return $self->render(user => $username, template => 'login/welcome');
   }
   else {
