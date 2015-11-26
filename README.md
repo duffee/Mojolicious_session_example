@@ -4,7 +4,7 @@ A simple Mojolicious application example for authenticating a user and maintaini
 This example will show you how to 
 * [set up](docs/Getting_Started.md) a Mojolicious application
 * create a [login page](docs/Login.md)
-* add simple authentication
+* add simple [authentication](docs/Authenticate.md)
 * re-direct to a landing page on successful login
 * return to login page with message on failed login
 * where to place pages that require authenticated access

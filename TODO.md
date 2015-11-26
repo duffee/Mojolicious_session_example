@@ -6,7 +6,7 @@
 
 * ~~add a login page to the app that has Username and Password fields~~
 * ~~show the changes required to add the route and a template~~
-* add a test for login success and failure 01_login.t
+* ~~add a test for login success and failure 01_login.t~~
 * change secret passphrase
 
 ## Protected Pages

@@ -19,10 +19,6 @@ We'll look at these 3 files
 * lib/Authenticate/Controller/Login.pm
 * templates/login/welcome.html.ep
 
-
-
-# START HERE ****************************
-
 ## lib/Authenticate.pm
 Add
 ```
@@ -59,17 +55,16 @@ fixed the form_for line to use the named route 'do_login'
 ## templates/login/welcome.html.ep
 Added a new template as a landing page for successful logins
 
-#### Notes ####
+#### NOTES ####
 
 OJO! - the on_user_login method needs you to return the rendered objects
 
 works for render(text =>), but not render(msg) which needs a template, I think
 
-
 add a landing page for successful login
 	templates/login/welcome.html.ep
 
-# END NOTES *****************************
+#### END NOTES ####
 
 # Try it out
 Start the server with
@@ -83,20 +78,36 @@ to get to the [Login page](http://localhost:3000/login)
 
 Make sure the Authentication works correctly
 
-Add 
+I've renamed `basic.t` to `00_basic.t` and copied it to `01_login.t` to add the
+new tests.  It now looks like
 ```
-TODO ***** Make a test for successful login and login failure
+my $t = Test::Mojo->new('Authenticate');
+
+$t->get_ok('/login')->status_is(200)->content_like(qr/Username/i);
+
+# test successful login - julian carax
+$t->post_ok('/login' => {Accept => '*/*'} => form => {username => 'julian', password => 'carax'})
+  ->status_is(200)
+  ->content_like(qr/Welcome, julian/i);
+
+# test failed login - francisco fumero
+$t->post_ok('/login' => {Accept => '*/*'} => form => {username => 'francisco', password => 'fumero'})
+  ->status_is(403)
+  ->content_like(qr/Login failed/i);
 ```
-to `t/basic.t` and run
+(are the Accept tests necessary?)  Then run
 ```
-script/login test t/basic.t
+script/authenticate test t/01_login.t
 ```
+We've already seen the first test.  The second posts valid credentials to the page,
+checks the return status and that we are Welcomed.  The third test posts invalid
+credentials, checks that we get a 403 Authorization failed status and that
+we know the login failed.
 
 # Next Step
 
-Clicking on the Login button takes you to a page that doesn't exist
-yet where we will need to check the user's credentials
-using the instructions in [Authenticate](Authenticate.md)
+Now that we can successfully check credentials, let's make sure that we can maintain sessions
+and protect private pages from unauthorised users.  Instructions continue in [Sessions](Sessions.md).
 
 ## More information
 

@@ -24,7 +24,7 @@ sub check_credentials {
 					nuria => 'monfort',
 		);
 
-	return ( $password_for{$username} eq $password );
+	return ( exists $password_for{$username} && $password_for{$username} eq $password );
 }
 
 sub on_user_login {
