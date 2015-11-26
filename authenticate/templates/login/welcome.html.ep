@@ -1,7 +1,6 @@
 % layout 'default';
-% title 'Sessions example - Page 3';
+% title 'Authenticate example - Page 3';
 <h2>Welcome, <%= ucfirst $user %>!</h2>
 You have logged in successfully.
 <p>
-Check out some protected pages with
-%= link_to Secure => 'protected'
+Move on to the Sessions example

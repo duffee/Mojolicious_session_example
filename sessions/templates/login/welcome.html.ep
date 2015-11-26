@@ -4,3 +4,4 @@
 You have logged in successfully.
 <p>
 Shall we look at a protected page first?
+%= link_to 'Login' => 'protected'
