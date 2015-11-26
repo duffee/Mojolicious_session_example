@@ -8,6 +8,7 @@ This example will show you how to
 * re-direct to a landing page on successful login
 * return to login page with message on failed login
 * where to place pages that require authenticated access
+* restrict access to protected pages using [session cookies](docs/Sessions.md)
 * where to place pages that are publically accessible
 
 if we get time we will show you how to

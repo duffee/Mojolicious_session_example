@@ -1,0 +1,6 @@
+% layout 'default';
+% title 'Sessions example - Page 3';
+<h2>Welcome, <%= ucfirst $user %>!</h2>
+You have logged in successfully.
+<p>
+Shall we look at a protected page first?
