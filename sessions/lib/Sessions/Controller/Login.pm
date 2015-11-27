@@ -41,7 +41,7 @@ sub on_user_login {
 	return $self->render(user => $username, template => 'login/welcome');
   }
   else {
-    return $self->render(text => '<h2>Login failed</h2><a href="/login">Try again</a>', status => 403);
+    return $self->render(text => '<h2>Login failed</h2><a href="/login">Try again</a>', status => 401);
   }
 }
 	

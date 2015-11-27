@@ -14,7 +14,7 @@ $t->post_ok('/login' => {Accept => '*/*'} => form => {username => 'julian', pass
 
 # test failed login - francisco fumero
 $t->post_ok('/login' => {Accept => '*/*'} => form => {username => 'francisco', password => 'fumero'})
-  ->status_is(403)
+  ->status_is(401)
   ->content_like(qr/Login failed/i);
 
 done_testing();
