@@ -9,7 +9,7 @@ sub startup {
   $self->plugin('PODRenderer');
 
   # set secret passphrase
-  $self->secrets('El Cementerio de los Libros Olvidados');
+  $self->secrets(['El Cementerio de los Libros Olvidados']);
 
   # Router
   my $r = $self->routes;
