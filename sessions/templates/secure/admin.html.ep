@@ -2,4 +2,5 @@
 % title 'Sessions example - Page 4';
 <h2>Admin page</h2>
 Authorized users only.  This is just another page that requires a login.
-There is no dynamic content, so why not put it with the static pages.
+There is no dynamic content, so why not put it with the static pages
+under /secure, like <a href="/secure/private_page.html">this one</a>.

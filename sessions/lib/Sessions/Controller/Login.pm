@@ -45,5 +45,15 @@ sub on_user_login {
   }
 }
 	
+sub is_logged_in {
+	my $self = shift;
+
+ 	return 1 if $self->session('logged_in') && $self->session('username') eq 'fail';
+
+	$self->render(
+		inline => '<h2>Unauthorized access</h2>Please <a href="/login">login</a> first.',
+		status => 401
+	);
+}
 
 1;
