@@ -1,0 +1,6 @@
+% layout 'default';
+% title 'Sessions example - Page 4';
+<h2>Authorized users only</h2>
+Hi <% ucfirst $user %>,
+<p>
+This is a protected page.

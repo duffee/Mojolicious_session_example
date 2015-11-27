@@ -10,7 +10,8 @@ $t->post_ok('/login' => {Accept => '*/*'} => form => {username => 'julian', pass
   ->status_is(200);
 
 # access a protected page
-$t->get_ok('/secure/protected')
-  ->status_is(200);
+$t->get_ok('/secure/protected')->status_is(200);
+$t->get_ok('/secure/admin')->status_is(200);
+$t->get_ok('/secure/private_page.html')->status_is(200);
 
 done_testing();
