@@ -26,7 +26,13 @@ sub startup {
   $authorized->get('/admin')->to(template => 'secure/admin');
 
   # this handles logouts
-  # $r->route('/logout')->name('do_logout')
+  $r->route('/logout')->name('do_logout')->to(cb => sub {
+	my $self = shift;
+
+	$self->session(expires => 1);
+
+	$self->redirect_to('/');
+  });
 }
 
 1;
