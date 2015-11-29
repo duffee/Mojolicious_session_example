@@ -1,11 +1,13 @@
-# Logout
+# HTTPS
 
-To very quickly show you how to make sure you've logged out of your applicaton,
-I've started a new app build on the last one.
+Passwords sent in the clear are a bad idea.  How do we force our application
+to use HTTPS?  Start with a new app
 ```
-mojo generate app Logout	# I've already done this bit
-cd logout
+mojo generate app HTTPS	# I've already done this bit
+cd https
 ```
+
+#### continue from here ####
 
 # `lib/Logout.pm`
 Just looking at one file this time.  Not bothering to put the code into a 
@@ -26,7 +28,7 @@ Expire the session and then return the user to the home page.
 # Try it out
 Start the server with
 ```
-morbo script/logout
+morbo script/https
 ```
 and click through the Login link on [localhost:3000/](http://localhost:3000/)
 to get to the [Login page](http://localhost:3000/login)
@@ -36,7 +38,7 @@ to get to the [Login page](http://localhost:3000/login)
 Make sure we can maintain sessions 
 
 ```
-script/logout test 
+script/https test 
 ```
 
 
@@ -44,7 +46,7 @@ script/logout test
 # Next Step
 
 The bare bones are in place.  The next step is to secure the passwords flying across the net.
-Instructions continue in [HTTPS](HTTPS.md).
+Instructions continue in [SSL](SSL.md).
 
 ## More information
 
