@@ -7,22 +7,24 @@ mojo generate app HTTPS	# I've already done this bit
 cd https
 ```
 
+## Why not use HTTPS everywhere?
+That's a very good question and makes this step unnecessary.  Have a look
+at the [Cookbook](http://localhost:3000/perldoc/Mojolicious/Guides/Cookbook#Basic-authentication1)
+under Applications and a few other places for this
+```
+script/https daemon -1 'https://*:3000?cert=./server.crt&key=./server.key'
+```
+But if https everywhere makes your app run slow, continue.
+
+## Mixed http/https usage
+**Still not sure how this is done, but this might be a starting point**
+
+` $c->req->url->base->scheme('https') `
+or `$c->url_for()-> ... ->scheme('https')`
+
+
 #### continue from here ####
 
-# `lib/Logout.pm`
-Just looking at one file this time.  Not bothering to put the code into a 
-controller.
-```
-  $r->route('/logout')->name('do_logout')->to(cb => sub {
-    my $self = shift;
-    
-    $self->session(expires => 1);
-
-    $self->redirect_to('/');
-  });
-
-```
-Expire the session and then return the user to the home page.
 
 
 # Try it out
