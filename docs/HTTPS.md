@@ -12,8 +12,16 @@ That's a very good question and makes this step unnecessary.  Have a look
 at the [Cookbook](http://localhost:3000/perldoc/Mojolicious/Guides/Cookbook#Basic-authentication1)
 under Applications and a few other places for this
 ```
-script/https daemon -1 'https://*:3000?cert=./server.crt&key=./server.key'
+script/https daemon -l 'https://*:3000?cert=./server.crt&key=./server.key'
 ```
+or using morbo like in the other steps use
+```
+morbo -l 'https://*:3000?cert=./server.crt&key=./server.key' script/https
+```
+To create the certificates, I was in the https directory and issued
+`openssl req -new -x509 -nodes -out server.crt -keyout server.key`
+
+
 But if https everywhere makes your app run slow, continue.
 
 ## Mixed http/https usage
@@ -52,7 +60,5 @@ Instructions continue in [SSL](SSL.md).
 
 ## More information
 
-Detail on sessions can be found in the 
-[online documentation](http://localhost:3000/perldoc/Mojolicious/Controller#session 'Mojolicious::Controller').
-More on forms and logins can be found on Oliver Günther's [Applications with Mojolicious Series]
-(http://oliverguenther.de/2014/04/applications-with-mojolicious-part-three-forms-and-login/ 'Forms, Logins')
+How to create your own self-signed certificates
+[Apache SSL FAQ](https://httpd.apache.org/docs/current/ssl/ssl_faq.html)
