@@ -1,0 +1,7 @@
+% layout 'default';
+% title 'LDAP example - Page 4';
+<h2>Admin page</h2>
+Authorized users only.  This is just another page that requires a login.
+<p>
+Now try <a href='/logout'>Logging out</a> and see if you can view this page again.
+<i>You shouldn't be able to.</i>

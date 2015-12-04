@@ -55,8 +55,8 @@ script/https test
 
 # Next Step
 
-The bare bones are in place.  The next step is to secure the passwords flying across the net.
-Instructions continue in [SSL](SSL.md).
+Now that passwords are secure flying across the net, let's hook it up with
+a real authentication source.  Instructions continue in [LDAP](LDAP.md).
 
 ## More information
 
