@@ -17,4 +17,14 @@ $t->post_ok('/login' => {Accept => '*/*'} => form => {username => 'francisco', p
   ->status_is(401)
   ->content_like(qr/Login failed/i);
 
+# test failed login - empty request
+$t->post_ok('/login' => {Accept => '*/*'} => form => {username => '', password => ''})
+  ->status_is(401)
+  ->content_like(qr/Login failed/i);
+
+# test failed login - junk inputs
+$t->post_ok('/login' => {Accept => '*/*'} => form => {username => q{''}, password => ''})
+  ->status_is(401)
+  ->content_like(qr/Login failed/i);
+
 done_testing();

@@ -1,0 +1,5 @@
+# config values for connecting to LDAP
+server: 	ldap.example.com
+baseDN: 	dc=users,dc=example,dc=com
+username: 	userid
+id: 		dn

@@ -38,3 +38,6 @@
 
 * put the instructions in the web pages so that the browser becomes live documentation
 
+## Logging
+
+* add logging for who is logs in and failed authetication

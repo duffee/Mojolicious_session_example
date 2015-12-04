@@ -21,3 +21,4 @@ nytprof.out
 
 log/
 *.swp
+ldap_config.yml
