@@ -27,7 +27,7 @@ my ($LDAP_server, $base_DN, $user_attr, $user_id, )
 sub check_credentials {
     my ($username, $password) = @_;
     return unless $username;
-	return 1 if ($username eq 'julian' && $password eq 'carax');	# needed for the tests to pass
+    return 1 if ($username eq 'julian' && $password eq 'carax');	# needed for the tests to pass
 
     my $ldap = Net::LDAP->new( $LDAP_server ) 
         or warn("Couldn't connect to LDAP server $LDAP_server: $@"), return;
@@ -37,7 +37,7 @@ sub check_credentials {
                         attrs => [$user_id],
                     );
     my $user_id = $search->pop_entry();
-	return unless $user_id;				# does this user exist in LDAP?
+    return unless $user_id;				# does this user exist in LDAP?
     
 	# this is where we check the password
     my $login = $ldap->bind( $user_id, password => $password );
