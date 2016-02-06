@@ -61,18 +61,27 @@ script/ldap test
 ```
 
 
-# Next Step
+# Future Work
 
-Now that passwords are secure flying across the net, let's hook it up with
-a real authentication source.  Instructions continue in [LDAP](LDAP.md).
+This tutorial finishes here, but if you're serious about security, you will start
+to consider logging access to your app.  There are a number of blogs and pages that
+will get you going with logging.  Perhaps the quickest is
+[Mojolicious::Plugin::AccessLog](https://metacpan.org/pod/Mojolicious::Plugin::AccessLog),
+a plugin to easily generate an access log.  You only need to consider where the
+log will be and whether you want to customize the log format.  It's a one line command
+in both Mojolicious and Mojolicious::Lite.
+
+For more control with a little more work, take a look at
+[Mojo::Log](https://metacpan.org/pod/Mojo::Log).
+I've been using it on one of my projects and it's not difficult.
+There are a number of other solutions, such as log4perl, the ConsoleLogger plugin, etc
 
 ## More information
 
-* [Authentication, Helpers and Plugins](http://mojocasts.com/e3 'Mojocast Episode 3')
-by Glen Hinkle.
-* [Mojolicious::Plugin::BasicAuthPlus]
-(https://metacpan.org/pod/Mojolicious::Plugin::BasicAuthPlus)
-* [Net::LDAP](https://metacpan.org/pod/Net::LDAP)
-* [URI::ldap](http://mojolicio.us/perldoc/URI/ldap)
-And of course, the [Mojolicious::Guides::Cookbook]
-(http://mojolicio.us/perldoc/Mojolicious/Guides/Cookbook#Basic-authentication)
+* [Mojo::Log](http://mojolicious.org/perldoc/Mojo/Log)
+* [Nyble's blog](http://pseudopoint.net/wp/?p=190)
+* [Logging and Testing](https://groups.google.com/forum/#!topic/mojolicious/X09J7ms7MQw)
+* [tempire's blog](http://blogs.perl.org/users/tempire/2011/02/logginz-ur-console-with-mojolicious.html)
+
+And in various examples in the [Mojolicious::Guides::Cookbook]
+(http://mojolicio.us/perldoc/Mojolicious/Guides/Cookbook)
