@@ -2,32 +2,37 @@
 
 At the command line, type
 ```
-mojo generate app GettingStarted
+mojo generate app SessionTutorial
 ```
-This will create the directory mytool and auto-generate a set of files which
+This will create the directory `session_tutorial` and auto-generate a set of files which
 we'll start from.
 
 ## Running Mojolicious
 
 ```
-cd getting_started
-morbo script/getting_started
+cd session_tutorial
+morbo script/session_tutorial
 ```
 
 open your browser at 
 [localhost:3000](http://localhost:3000) 
 and see the Welcome page.
 
+`morbo` is one of the built-in webservers that ships with Mojolicious.  
+It's portable and self-restart capable, making it perfect for development and testing.
+
 ## Testing the application
 
 We will include test files to verify the application works as described
-in the **t/** directory.  You can run any test with
+in the **t/** directory.
+You can run any test with
 ```
 prove -Ilib t/filename
 ```
 The **-Ilib** adds the application library directory to your path and **prove**
-runs the test harness.  To verify that Mojolicious has successfully 
-started up (other than using a browser), run
+runs the test harness.  You will need to have 
+[Test::Mojo](https://metacpan.org/pod/Test::Mojo) installed to run these tests.   
+To verify that Mojolicious has successfully started up (other than using a browser), run
 ```
 prove -Ilib t/basic.t
 ```
@@ -35,7 +40,7 @@ which checks the welcome page and the perldoc pages are there.
 
 To run the whole test suite, use the app with the test option like so
 ```
-script/getting_started test
+script/session_tutorial test
 ```
 
 ## Documentation
@@ -56,6 +61,8 @@ mojo --help
 Having created the framework for your app, the next step is
 to create a login page following the instructions in [Login](Login.md)
 
-These instructions don't assume that you've followed all the preceding
-instructions, so remember to kill the server with Control-C before moving
-on to the next step and starting a new server.
+I've taken a snapshot of the app as it is right now, 
+which you can find in [Snapshots/Getting_Started].
+If at any time you want to go back to an earlier step,
+simply stop the server, cd to the step in the `Snapshots` directory
+and start the server there using `morbo script/session_tutorial`.
