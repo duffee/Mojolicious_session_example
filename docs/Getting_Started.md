@@ -32,6 +32,7 @@ prove -Ilib t/filename
 The **-Ilib** adds the application library directory to your path and **prove**
 runs the test harness.  You will need to have 
 [Test::Mojo](https://metacpan.org/pod/Test::Mojo) installed to run these tests.   
+
 To verify that Mojolicious has successfully started up (other than using a browser), run
 ```
 prove -Ilib t/basic.t
@@ -62,7 +63,7 @@ Having created the framework for your app, the next step is
 to create a login page following the instructions in [Login](Login.md)
 
 I've taken a snapshot of the app as it is right now, 
-which you can find in [Snapshots/Getting_Started].
+which you can find in `Snapshots/Getting_Started`.
 If at any time you want to go back to an earlier step,
-simply stop the server, cd to the step in the `Snapshots` directory
+simply stop the server, `cd` to the step in the `Snapshots` directory
 and start the server there using `morbo script/session_tutorial`.
