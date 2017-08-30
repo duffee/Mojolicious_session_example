@@ -1,5 +1,16 @@
 # Setting up a Mojolicious application
 
+In this tutorial, each step builds on the previous step.
+The completed app is a single example that resides in
+the directory `session_tutorial`.
+All the instructions given assume that you are starting
+from scratch and tell you how to generate the final example
+shown in `session_tutorial`.
+
+Let's get started.
+
+## Getting Started
+
 At the command line, type
 ```
 mojo generate app SessionTutorial

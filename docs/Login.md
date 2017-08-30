@@ -24,8 +24,11 @@ use Mojo::Base 'Mojolicious';
 sub startup {
   my $self = shift;
 
+  # Load configuration from hash returned by "my_app.conf"
+  my $config = $self->plugin('Config');
+
   # Documentation browser under "/perldoc"
-  $self->plugin('PODRenderer');
+  $self->plugin('PODRenderer') if $config->{perldoc};
 
   # Router
   my $r = $self->routes;
@@ -40,8 +43,10 @@ change `$r->get('/')->to('example#welcome');`
 to `$r->get('/')->to('SessionTutorial#start');` and add a new route
 `$r->get('/login')->to('SessionTutorial#login');`
 
-The route to the controller has two parts.  The `login` looks for `lib/SessionTutorial/Controller/SessionTutorial.pm` 
-and the `start` runs the `start` action (sub) in the controller file.
+The route to the controller has two parts.  
+The `SessionTutorial` before the `#` looks for `lib/SessionTutorial/Controller/SessionTutorial.pm` 
+and looks for a sub in the controller file with the same name as the part following the `#` sign,
+eg. `start` runs the `start` action (or subroutine) in the controller file.
 
 ## lib/SessionTutorial/Controller/SessionTutorial.pm
 Rename `lib/SessionTutorial/Controller/Example.pm` to `lib/SessionTutorial/Controller/SessionTutorial.pm`,
@@ -85,6 +90,8 @@ morbo script/session_tutorial
 ```
 do so now and have a look at your new Start page on 
 [localhost:3000/](http://localhost:3000/).
+
+### Morbo - the webserver for development
 If `morbo` has been running since [Getting Started](Getting_Started.md),
 you'll notice that the changes you've made to the Controller were loaded
 as soon as you saved the updated file.  How's that for a time saver?
