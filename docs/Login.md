@@ -40,22 +40,22 @@ sub startup {
 1;
 ```
 change `$r->get('/')->to('example#welcome');`
-to `$r->get('/')->to('SessionTutorial#start');` and add a new route
-`$r->get('/login')->to('SessionTutorial#login');`
+to `$r->get('/')->to('Tutorial#start');` and add a new route
+`$r->get('/login')->to('Tutorial#login');`
 
 The route to the controller has two parts.  
-The `SessionTutorial` before the `#` looks for `lib/SessionTutorial/Controller/SessionTutorial.pm` 
+The `Tutorial` before the `#` looks for `lib/SessionTutorial/Controller/Tutorial.pm` 
 and looks for a sub in the controller file with the same name as the part following the `#` sign,
 eg. `start` runs the `start` action (or subroutine) in the controller file.
 
-## lib/SessionTutorial/Controller/SessionTutorial.pm
-Rename `lib/SessionTutorial/Controller/Example.pm` to `lib/SessionTutorial/Controller/SessionTutorial.pm`,
-change the package name, rename the welcome method to start and change the message
+## lib/SessionTutorial/Controller/Tutorial.pm
+Rename `lib/SessionTutorial/Controller/Example.pm` to `lib/SessionTutorial/Controller/Tutorial.pm`,
+change the package name on the first line, rename the welcome method to start and change the message
 to end up like this
 
 
 ```
-package SessionTutorial::Controller::SessionTutorial;
+package SessionTutorial::Controller::Tutorial;
 use Mojo::Base 'Mojolicious::Controller';
 
 # This action will render a template
@@ -90,6 +90,12 @@ morbo script/session_tutorial
 ```
 do so now and have a look at your new Start page on 
 [localhost:3000/](http://localhost:3000/).
+You should see
+---
+**Creating a Login Page**
+
+This is the starting page for the first step of the Mojolicious Session Tutorial 
+---
 
 ### Morbo - the webserver for development
 If `morbo` has been running since [Getting Started](Getting_Started.md),
@@ -106,7 +112,7 @@ This is a link to the
 page (which we should put into a navigational menu later)
 ``` 
 
-Add a route in `lib/SessionTutorial/Controller/SessionTutorial.pm` for `login`
+Add a route in `lib/SessionTutorial/Controller/Tutorial.pm` for `login`
 ```
 sub login {
   my $self = shift;
@@ -146,16 +152,22 @@ Hopefully your password is starred out.
 
 Make sure the Login page is rendered correctly.
 
-Add `$t->get_ok('/login')->status_is(200)->content_like(qr/Username/i);`
-to `t/basic.t` and run
+Open `t/basic.t`, 
+add `$t->get_ok('/login')->status_is(200)->content_like(qr/Username/i);`
+and run
 ```
 script/session_tutorial test t/basic.t
 ```
 
 # Next Step
 
-Clicking on the Login button takes you to a page that doesn't exist
-yet where we will need to check the user's credentials
+Clicking on the Login button takes you to an error page saying 
+---
+**Page not found... yet!** 
+
+None of these routes could generate a response.
+---
+Now we will need to check the user's credentials
 using the instructions in [Authenticate](Authenticate.md)
 
 ## More information

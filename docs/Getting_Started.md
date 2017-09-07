@@ -44,7 +44,7 @@ The **-Ilib** adds the application library directory to your path and **prove**
 runs the test harness.  You will need to have 
 [Test::Mojo](https://metacpan.org/pod/Test::Mojo) installed to run these tests.   
 
-To verify that Mojolicious has successfully started up (other than using a browser), run
+To verify that your Mojolicious will start up successfully (other than by using a browser), run
 ```
 prove -Ilib t/basic.t
 ```
@@ -63,7 +63,7 @@ Use
 [localhost:3000/perldoc](http://localhost:3000/perldoc "Mojolicious Guides") 
 to access the Guide.
 
-To access the online help for the mojo command, use
+To access the command line help for the mojo command, use
 ```
 mojo --help
 ```
