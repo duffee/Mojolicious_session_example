@@ -1,22 +1,18 @@
 # HTTPS
 
 Passwords sent in the clear are a bad idea.  How do we force our application
-to use HTTPS?  Start with a new app
-```
-mojo generate app HTTPS	# I've already done this bit
-cd https
-```
+to use HTTPS?
 
 ## Why not use HTTPS everywhere?
 That's a very good question and makes this step unnecessary.  Have a look
 at the [Cookbook](http://localhost:3000/perldoc/Mojolicious/Guides/Cookbook#Basic-authentication1)
 under Applications and a few other places for this
 ```
-script/https daemon -l 'https://*:3000?cert=./server.crt&key=./server.key'
+script/session_tutorial daemon -l 'https://*:3000?cert=./server.crt&key=./server.key'
 ```
 or using morbo like in the other steps use
 ```
-morbo -l 'https://*:3000?cert=./server.crt&key=./server.key' script/https
+morbo -l 'https://*:3000?cert=./server.crt&key=./server.key' script/session_tutorial
 ```
 To create the certificates, I was in the https directory and issued
 `openssl req -new -x509 -nodes -out server.crt -keyout server.key`
@@ -38,7 +34,7 @@ or `$c->url_for()-> ... ->scheme('https')`
 # Try it out
 Start the server with
 ```
-morbo script/https
+morbo script/session_tutorial
 ```
 and click through the Login link on [localhost:3000/](http://localhost:3000/)
 to get to the [Login page](http://localhost:3000/login)
@@ -48,7 +44,7 @@ to get to the [Login page](http://localhost:3000/login)
 Make sure we can maintain sessions 
 
 ```
-script/https test 
+script/session_tutorial test 
 ```
 
 

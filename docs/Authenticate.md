@@ -1,18 +1,8 @@
 # Authenticating login credentials
 
-To keep things clean, I've started a new app called Login
-so that we can play with a new set of files that don't 
-conflict with the other stages.  As a result you can run 
-any of the stages by just stopping the morbo server and 
-starting a different startup script.
-
-```
-mojo generate app Authenticate	# I've already done this bit
-cd authenticate
-```
-This is just the same as in [GettingStarted](Getting_Started.md)
-but with a new name under the lib and script directories which
-is called in the start_app and new functions.
+Well, we can't let just _anybody_ into our secure website!
+We need to check that the username and password are correct.
+We also need somewhere for that login button to go.
 
 We'll look at these 3 files
 * lib/Authenticate.pm
@@ -69,7 +59,7 @@ add a landing page for successful login
 # Try it out
 Start the server with
 ```
-morbo script/authenticate
+morbo script/session_tutorial
 ```
 and click through the Login link on [localhost:3000/](http://localhost:3000/)
 to get to the [Login page](http://localhost:3000/login)
@@ -97,7 +87,7 @@ $t->post_ok('/login' => {Accept => '*/*'} => form => {username => 'francisco', p
 ```
 (are the Accept tests necessary?)  Then run
 ```
-script/authenticate test t/01_login.t
+script/session_tutorial test t/01_login.t
 ```
 We've already seen the first test.  The second posts valid credentials to the page,
 checks the return status and that we are Welcomed.  The third test posts invalid

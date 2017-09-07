@@ -1,10 +1,6 @@
 # Sessions
 
-I've created a new app to show how to protect pages.
-```
-mojo generate app Sessions	# I've already done this bit
-cd sessions
-```
+This step will show you how to protect your pages.
 
 We'll look at these 3 files
 * lib/Sessions.pm
@@ -57,7 +53,7 @@ method.
 # Try it out
 Start the server with
 ```
-morbo script/sessions
+morbo script/session_tutorial
 ```
 and click through the Login link on [localhost:3000/](http://localhost:3000/)
 to get to the [Login page](http://localhost:3000/login)
@@ -67,7 +63,7 @@ to get to the [Login page](http://localhost:3000/login)
 Make sure we can maintain sessions 
 
 ```
-script/sessions test 
+script/session_tutorial test 
 ```
 
 # Change the Secret Passphrase

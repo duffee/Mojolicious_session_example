@@ -1,11 +1,7 @@
 # LDAP
 
 We've made sure that the passwords are sent securely.  How about checking them
-against a common authentication method, like LDAP?  Start with a new app
-```
-mojo generate app LDAP	# I've already done this bit
-cd ldap
-```
+against a common authentication method, like LDAP?
 
 ## lib/LDAP/Controller/Login.pm
 
@@ -44,7 +40,7 @@ the values to connect to your LDAP server.
 
 Start the server with
 ```
-morbo -l 'https://*:3000?cert=./server.crt&key=./server.key' script/ldap
+morbo -l 'https://*:3000?cert=./server.crt&key=./server.key' script/session_tutorial
 ```
 and click through the Login link on [localhost:3000/](https://localhost:3000/)
 to get to the [Login page](https://localhost:3000/login)
@@ -57,7 +53,7 @@ the dummy login and using a test account of your own to make sure that the
 app is connecting to your LDAP correctly.
 
 ```
-script/ldap test 
+script/session_tutorial test 
 ```
 
 

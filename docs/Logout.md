@@ -1,11 +1,6 @@
 # Logout
 
-To very quickly show you how to make sure you've logged out of your applicaton,
-I've started a new app build on the last one.
-```
-mojo generate app Logout	# I've already done this bit
-cd logout
-```
+This is a very short page to show you how to make sure you've logged out of your applicaton.
 
 # `lib/Logout.pm`
 Just looking at one file this time.  Not bothering to put the code into a 
@@ -26,7 +21,7 @@ Expire the session and then return the user to the home page.
 # Try it out
 Start the server with
 ```
-morbo script/logout
+morbo script/session_tutorial
 ```
 and click through the Login link on [localhost:3000/](http://localhost:3000/)
 to get to the [Login page](http://localhost:3000/login)
@@ -36,7 +31,7 @@ to get to the [Login page](http://localhost:3000/login)
 Make sure we can maintain sessions 
 
 ```
-script/logout test 
+script/session_tutorial test 
 ```
 
 
