@@ -94,9 +94,9 @@ You should see
 
 ---
 
-**Creating a Login Page**
-
-This is the starting page for the first step of the Mojolicious Session Tutorial 
+>**Creating a Login Page**
+>
+>This is the starting page for the first step of the Mojolicious Session Tutorial 
 
 ---
 
@@ -168,9 +168,9 @@ Clicking on the Login button takes you to an error page saying
 
 ---
 
-**Page not found... yet!** 
-
-None of these routes could generate a response.
+>**Page not found... yet!** 
+>
+>None of these routes could generate a response.
 
 ---
 
