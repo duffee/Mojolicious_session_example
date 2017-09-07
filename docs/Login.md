@@ -91,10 +91,13 @@ morbo script/session_tutorial
 do so now and have a look at your new Start page on 
 [localhost:3000/](http://localhost:3000/).
 You should see
+
 ---
+
 **Creating a Login Page**
 
 This is the starting page for the first step of the Mojolicious Session Tutorial 
+
 ---
 
 ### Morbo - the webserver for development
@@ -162,11 +165,15 @@ script/session_tutorial test t/basic.t
 # Next Step
 
 Clicking on the Login button takes you to an error page saying 
+
 ---
+
 **Page not found... yet!** 
 
 None of these routes could generate a response.
+
 ---
+
 Now we will need to check the user's credentials
 using the instructions in [Authenticate](Authenticate.md)
 
