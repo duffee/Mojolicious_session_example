@@ -79,5 +79,5 @@ There are a number of other solutions, such as log4perl, the ConsoleLogger plugi
 * [Logging and Testing](https://groups.google.com/forum/#!topic/mojolicious/X09J7ms7MQw)
 * [tempire's blog](http://blogs.perl.org/users/tempire/2011/02/logginz-ur-console-with-mojolicious.html)
 
-And in various examples in the [Mojolicious::Guides::Cookbook]
-(http://mojolicio.us/perldoc/Mojolicious/Guides/Cookbook)
+And in various examples in the 
+[Mojolicious::Guides::Cookbook](http://mojolicio.us/perldoc/Mojolicious/Guides/Cookbook)

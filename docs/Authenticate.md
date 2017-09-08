@@ -113,5 +113,5 @@ and protect private pages from unauthorised users.  Instructions continue in [Se
 
 ## More information
 
-More on forms and logins can be found on Oliver Günther's [Applications with Mojolicious Series]
-(http://oliverguenther.de/2014/04/applications-with-mojolicious-part-three-forms-and-login/ 'Forms, Logins')
+More on forms and logins can be found on Oliver G&uuml;nther's
+[Applications with Mojolicious](http://oliverguenther.de/2014/04/applications-with-mojolicious-part-three-forms-and-login/ 'Forms, Logins')
