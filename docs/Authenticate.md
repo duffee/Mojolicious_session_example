@@ -5,18 +5,18 @@ We need to check that the username and password are correct.
 We also need somewhere for that login button to go.
 
 We'll look at these 3 files
-* lib/Authenticate.pm
-* lib/Authenticate/Controller/Login.pm
-* templates/login/welcome.html.ep
+* lib/SessionTutorial.pm
+* lib/SessionTutorial/Controller/Tutorial.pm
+* templates/tutorial/welcome.html.ep
 
-## lib/Authenticate.pm
+## lib/SessionTutorial.pm
 Add
 ```
-$r->post('/login')->name('do_login')->to('Login#on_user_login');
+$r->post('/login')->name('do_login')->to('Tutorial#on_user_login');
 ```
-* explain the named route, do_login and the controller, Login, where you need on_user_login
+* explain the named route, do_login and the controller, Tutorial, where you need on_user_login
 
-## lib/Authenticate/Controller/Login.pm
+## lib/SessionTutorial/Controller/Tutorial.pm
 Ad in the on_user_login method to handle the credentials
 ```
 sub on_user_login {
@@ -39,15 +39,15 @@ sub on_user_login {
 * quickest way of making sure you've got the right behaviour is to render to text, as in the failed login
 * a better render method directs the render to a template
 
-## templates/login/login.html.ep
+## templates/tutorial/login.html.ep
 fixed the form_for line to use the named route 'do_login'
 
-## templates/login/welcome.html.ep
+## templates/tutorial/welcome.html.ep
 Added a new template as a landing page for successful logins
 
 #### NOTES ####
 
-OJO! - the on_user_login method needs you to return the rendered objects
+*OJO!* - the on_user_login method needs you to return the rendered objects
 
 works for render(text =>), but not render(msg) which needs a template, I think
 
@@ -57,11 +57,8 @@ add a landing page for successful login
 #### END NOTES ####
 
 # Try it out
-Start the server with
-```
-morbo script/session_tutorial
-```
-and click through the Login link on [localhost:3000/](http://localhost:3000/)
+With the server running,
+click through the Login link on [localhost:3000/](http://localhost:3000/)
 to get to the [Login page](http://localhost:3000/login)
 
 # Test the app
@@ -71,7 +68,7 @@ Make sure the Authentication works correctly
 I've renamed `basic.t` to `00_basic.t` and copied it to `01_login.t` to add the
 new tests.  It now looks like
 ```
-my $t = Test::Mojo->new('Authenticate');
+my $t = Test::Mojo->new('SessionTutorial');
 
 $t->get_ok('/login')->status_is(200)->content_like(qr/Username/i);
 
@@ -103,7 +100,9 @@ Add
 ```
 $self->secrets(['El Cementerio de los Libros Olvidados']);
 ```
-to `lib/Authenticate.pm`.
+to `lib/SessionTutorial.pm`.
+
+_latest mojolicious creates a file called **session_tutorial.conf** which has a secrets line_
 
 
 # Next Step

@@ -40,8 +40,9 @@ You can run any test with
 ```
 prove -Ilib t/filename
 ```
-The **-Ilib** adds the application library directory to your path and **prove**
-runs the test harness.  You will need to have 
+The **prove** program runs the test harness and the **-Ilib** argument 
+adds the application library directory to your path.
+You will need to have 
 [Test::Mojo](https://metacpan.org/pod/Test::Mojo) installed to run these tests.   
 
 To verify that your Mojolicious will start up successfully (other than by using a browser), run
