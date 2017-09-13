@@ -76,9 +76,8 @@ sub startup {
 
 ## lib/SessionTutorial/Controller/Tutorial.pm
 Rename `lib/SessionTutorial/Controller/Example.pm` to `lib/SessionTutorial/Controller/Tutorial.pm`,
-change the package name on the first line, rename the welcome method to start and change the message
-to end up like this
-
+change the package name on the first line, rename the **welcome** method to **start** 
+and change the message to end up like this
 
 ```
 package SessionTutorial::Controller::Tutorial;
