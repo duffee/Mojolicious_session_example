@@ -41,3 +41,14 @@
 ## Logging
 
 * add logging for who is logs in and failed authetication
+
+# Issues
+
+## Config
+
+I found 
+  # Load configuration from hash returned by "my_app.conf"
+  my $config = $self->plugin('Config');
+in Login - lib/SessionTutorial.pm.  Where should this go?
+
+
