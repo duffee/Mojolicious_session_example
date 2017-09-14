@@ -30,4 +30,14 @@ sub on_user_login {
   }
 }
 
+sub check_credentials {
+  my ($username, $password) = @_;
+
+  if ( $username eq 'julian' && $password eq 'carax' ) {
+    return 1;
+  }
+
+  return undef;
+}
+
 1;

@@ -32,6 +32,16 @@ sub on_user_login {
     return $self->render(text => '<h2>Login failed</h2><a href="/login">Try again</a>', status => 403);
   }
 }
+
+sub check_credentials {
+  my ($username, $password) = @_;
+
+  if ( $username eq 'julian' && $password eq 'carax' ) {
+    return 1;
+  }
+
+  return undef;
+}
 ```
 * explain that username, password have been POSTed to the controller
 * note that "return" isn't required, but good form for chaining methods
