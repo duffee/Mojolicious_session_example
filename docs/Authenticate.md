@@ -17,7 +17,7 @@ $r->post('/login')->name('do_login')->to('Tutorial#on_user_login');
 * explain the named route, do_login and the controller, Tutorial, where you need on_user_login
 
 ## lib/SessionTutorial/Controller/Tutorial.pm
-Ad in the on_user_login method to handle the credentials
+Add a new method called **on_user_login** to handle checking credentials
 ```
 sub on_user_login {
   my $self = shift;
