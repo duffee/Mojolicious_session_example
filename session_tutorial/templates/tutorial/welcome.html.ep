@@ -1,0 +1,6 @@
+% layout 'default';
+% title 'Mojolicious Session Tutorial - Page 2';
+<h2><%= $msg %></h2>
+This is your welcome page of the Mojolicious Session Tutorial.
+<p>
+It greets users who have successfully authenticated.
