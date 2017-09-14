@@ -48,11 +48,36 @@ The `Tutorial` before the `#` looks for `lib/SessionTutorial/Controller/Tutorial
 and looks for a sub in the controller file with the same name as the part following the `#` sign,
 eg. `start` runs the `start` action (or subroutine) in the controller file.
 
+It should now look like this
+```
+package SessionTutorial;
+use Mojo::Base 'Mojolicious';
+
+# This method will run once at server start
+sub startup {
+  my $self = shift;
+
+  # Load configuration from hash returned by "my_app.conf"
+  my $config = $self->plugin('Config');
+
+  # Documentation browser under "/perldoc"
+  $self->plugin('PODRenderer') if $config->{perldoc};
+
+  # Router
+  my $r = $self->routes;
+
+  # Normal route to controller
+  $r->get('/')->to('Tutorial#start');
+  $r->get('/')->to('Tutorial#login');
+}
+
+1;
+```
+
 ## lib/SessionTutorial/Controller/Tutorial.pm
 Rename `lib/SessionTutorial/Controller/Example.pm` to `lib/SessionTutorial/Controller/Tutorial.pm`,
-change the package name on the first line, rename the welcome method to start and change the message
-to end up like this
-
+change the package name on the first line, rename the **welcome** method to **start** 
+and change the message to end up like this
 
 ```
 package SessionTutorial::Controller::Tutorial;

@@ -18,6 +18,7 @@ sub startup {
   $r->get('/')->to('Tutorial#start');
 
   $r->get('/login')->to('Tutorial#login');
+  $r->post('/login')->name('do_login')->to('Tutorial#on_user_login');
 }
 
 1;
