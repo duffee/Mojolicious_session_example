@@ -26,7 +26,7 @@ sub on_user_login {
   my $password = $self->param('password');
 
   if (check_credentials($username, $password)) {
-    return $self->render(user => $username, template => 'login/welcome');
+    return $self->render(user => $username, template => 'tutorial/welcome');
   } 
   else {
     return $self->render(text => '<h2>Login failed</h2><a href="/login">Try again</a>', status => 403);
@@ -52,7 +52,7 @@ Added a new template as a landing page for successful logins
 works for render(text =>), but not render(msg) which needs a template, I think
 
 add a landing page for successful login
-	templates/login/welcome.html.ep
+	templates/tutorial/welcome.html.ep
 
 #### END NOTES ####
 
