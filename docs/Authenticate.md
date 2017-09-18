@@ -26,10 +26,16 @@ sub on_user_login {
   my $password = $self->param('password');
 
   if (check_credentials($username, $password)) {
-    return $self->render(user => $username, template => 'tutorial/welcome');
+    $self->render(user => $username, 
+                template => 'tutorial/welcome', 
+                format => 'html'
+            );
   } 
   else {
-    return $self->render(text => '<h2>Login failed</h2><a href="/login">Try again</a>', status => 403);
+    $self->render(text => '<h2>Login failed</h2><a href="/login">Try again</a>', 
+                format => 'html', 
+                status => 403
+            );  
   }
 }
 
