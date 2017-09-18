@@ -23,22 +23,28 @@ sub on_user_login {
   my $password = $self->param('password');
 
   if (check_credentials($username, $password)) {
-    return $self->render('tutorial/welcome', user => $username);
+    $self->render(user => $username, 
+				template => 'tutorial/welcome', 
+				format => 'html'
+			);
   } 
   else {
-    return $self->render(text => '<h2>Login failed</h2><a href="/login">Try again</a>', status => 403);
+    $self->render(text => '<h2>Login failed</h2><a href="/login">Try again</a>', 
+				format => 'html', 
+				status => 403
+			);
   }
 }
 
 sub check_credentials {
   my ($username, $password) = @_;
 
- my %password_for = ( daniel => 'sempere',
+  my %password_for = ( daniel => 'sempere',
 				julian => 'carax',
 				nuria => 'monfort',
- );
+  );
 
- return ( exists $password_for{$username} && $password_for{$username} eq $password );
+  return ( exists $password_for{$username} && $password_for{$username} eq $password );
 }
 
 1;
