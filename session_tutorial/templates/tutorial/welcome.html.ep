@@ -1,6 +1,7 @@
 % layout 'default';
-% title 'Mojolicious Session Tutorial - Page 2';
-<h2><%= $msg %></h2>
-This is your welcome page of the Mojolicious Session Tutorial.
+% title 'Mojolicious session example - Page 3';
+<h2>Welcome, <%= ucfirst $user %>!</h2>
+You have logged in successfully.
 <p>
-It greets users who have successfully authenticated.
+Now we need to know how to store a session.
+Move on to the next step.
