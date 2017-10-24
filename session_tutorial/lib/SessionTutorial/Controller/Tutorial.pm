@@ -39,8 +39,13 @@ sub check_credentials {
   my ($username, $password) = @_;
 
   my %password_for = ( daniel => 'sempere',
+<<<<<<< HEAD
 			julian => 'carax',
 			nuria  => 'monfort',
+=======
+				julian => 'carax',
+				nuria => 'monfort',
+>>>>>>> 8f722d1f1ae2ddb740a22d41d48460ce69a0d455
   );
 
   return ( exists $password_for{$username} && $password_for{$username} eq $password );
