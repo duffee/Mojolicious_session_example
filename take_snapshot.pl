@@ -3,7 +3,7 @@
 # take_snapshot.pl - copies files from the app directory to a named directory
 # Boyd Duffee, Aug 2017
 #
-# bugs: copies .swp files to Snapshot, need to stop editing before taking snapshot
+# bug: copies .swp files to Snapshot, need to stop editing before taking snapshot
 
 use strict;
 use v5.010;
