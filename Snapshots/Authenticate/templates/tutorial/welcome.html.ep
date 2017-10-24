@@ -1,0 +1,7 @@
+% layout 'default';
+% title 'Mojolicious session example - Page 3';
+<h2>Welcome, <%= ucfirst $user %>!</h2>
+You have logged in successfully.
+<p>
+Now we need to know how to store a session.
+Move on to the next step.
