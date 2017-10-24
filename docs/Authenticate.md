@@ -26,10 +26,15 @@ sub on_user_login {
   my $password = $self->param('password');
 
   if (check_credentials($username, $password)) {
-    return $self->render(user => $username, template => 'tutorial/welcome');
+    $self->stash(user => $username);
+    $self->render(template => 'tutorial/welcome', format => 'html');
   } 
   else {
-    return $self->render(text => '<h2>Login failed</h2><a href="/login">Try again</a>', status => 403);
+    $self->render(
+        text => '<h2>Login failed</h2><a href="/login">Try again</a>',
+        format => 'html',
+        status => 403
+    );
   }
 }
 
@@ -43,17 +48,30 @@ sub check_credentials {
   return undef;
 }
 ```
-* explain that username, password have been POSTed to the controller
-* note that "return" isn't required, but good form for chaining methods
-* the check_credentials sub separates the password check from the login action
-* quickest way of making sure you've got the right behaviour is to render to text, as in the failed login
-* a better render method directs the render to a template
+
+The form on the Login page POSTs the username and password to /login,
+so we need a route that directs the request to the on_user_login method
+in the Tutorial controller.
+
+( note that "return" isn't required, but good form for chaining methods **check this** )
+
+The check_credentials method separates the password check from the login action.
+This allows us to change the authentication method in future 
+while maintaining the same login behaviour.
+
+The quickest way of making sure you've got the right behaviour is to render to text, 
+as in the failed login.  Remember to set the format to html if you want to include a link.
+( _why is this not default_ )
+The render used in the successful login directs the output to a template
+(which is composed of controller/action _and for some reason defaulted to txt output_).
 
 ## templates/tutorial/login.html.ep
 fixed the form_for line to use the named route 'do_login'
 
 ## templates/tutorial/welcome.html.ep
-Added a new template as a landing page for successful logins
+Added a new template as a landing page for successful logins,
+which is a good place to put messages and links to the content 
+that the user can access.
 
 #### NOTES ####
 
@@ -102,7 +120,7 @@ credentials, checks that we get a 403 Authorization failed status and that
 we know the login failed.
 
 # Change the Secret Passphrase
-(move this to the next step?)
+(_move this to the next step?_)
 
 Now that we're sending passwords across the net, it's advisable to change the Secret Passphrase
 that is used in security features such as signed cookies, which we're using to keep sessions.
