@@ -3,17 +3,13 @@
 This step will show you how to protect your pages.
 
 We'll look at these 3 files
-* lib/Sessions.pm
-* lib/Sessions/Controller/Login.pm
-* templates/secure/welcome.html.ep
+* lib/SessionTutorial.pm
+* lib/SessionTutorial/Controller/Login.pm
+* templates/tutorial/welcome.html.ep
 
-## templates/secure/welcome.html.ep
-I've moved the welcome page to a new directory called `secure` where we'll
-put pages that require authorization.
+## templates/tutorial/welcome.html.ep
 
-**But it doesn't work there** revert the move
-
-## lib/Sessions/Controller/Login.pm
+## lib/SessionTutorial/Controller/Login.pm
 Add in these lines to the `on_user_login` method before rendering the page
 ```
     $self->session(logged_in => 1);             # set the logged_in flag
@@ -68,6 +64,8 @@ script/session_tutorial test
 
 # Change the Secret Passphrase
 
+_only required for older versions of Mojolicious (older than 6.??) _
+
 It's advisable to change the Secret Passphrase
 that is used in security features such as signed cookies, which we're using to keep sessions.
 It cryptographically signs the cookie to prevent tampering, but since anyone can know that
@@ -76,7 +74,7 @@ Add
 ```
 $self->secrets(['El Cementerio de los Libros Olvidados']);
 ```
-to `lib/Sessions.pm`.
+to `lib/SessionTutorial.pm`.
 
 
 # Next Step
