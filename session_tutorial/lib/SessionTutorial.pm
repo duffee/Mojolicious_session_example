@@ -19,6 +19,11 @@ sub startup {
 
   $r->get('/login')->to('Tutorial#login');
   $r->post('/login')->name('do_login')->to('Tutorial#on_user_login');
+
+  my $authorized = $r->under('/secure')->to('Tutorial#is_logged_in');
+  $authorized->get('/protected')->to('Tutorial#protected');
+  $authorized->get('/admin')->to(template => 'tutorial/admin');
+
 }
 
 1;

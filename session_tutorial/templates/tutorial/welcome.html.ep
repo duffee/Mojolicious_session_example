@@ -4,4 +4,5 @@
 You have logged in successfully.
 <p>
 Now we need to know how to store a session.
-Move on to the next step.
+Move on to the 
+%= link_to 'next step' => '/secure/protected'
