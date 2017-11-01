@@ -65,4 +65,12 @@ sub is_logged_in {
   return undef;
 }
 
+sub protected {
+  my $self = shift;
+
+  my $username = $self->session('username');
+  $self->render(user => $username, template => 'tutorial/protected');
+}
+
+
 1;
