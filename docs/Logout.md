@@ -2,7 +2,7 @@
 
 This is a very short page to show you how to make sure you've logged out of your applicaton.
 
-# `lib/Logout.pm`
+# `lib/SessionTutorial.pm`
 Just looking at one file this time.  Not bothering to put the code into a 
 controller.
 ```
@@ -17,6 +17,14 @@ controller.
 ```
 Expire the session and then return the user to the home page.
 
+You can make that easier for the user by adding a link to the protected page, 
+`templates/tutorial/protected.html.ep`
+```
+<h2>Test the Logout</h2>
+Click here to 
+%= link_to Logout => '/logout'
+```
+
 
 # Try it out
 Start the server with
@@ -28,7 +36,9 @@ to get to the [Login page](http://localhost:3000/login)
 
 # Test the app
 
-Make sure we can maintain sessions 
+Make sure we can maintain sessions and the session is removed when the user
+visits `/logout`.  Add a file `t/02_logout.t` to check that the protected page
+is accessible _only_ to successful logged in users. 
 
 ```
 script/session_tutorial test 

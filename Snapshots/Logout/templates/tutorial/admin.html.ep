@@ -1,0 +1,4 @@
+% layout 'default';
+% title 'Mojolicious session example - Page 5?';
+<h2>Admin page</h2>
+This admin page should also be protected.
