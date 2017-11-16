@@ -14,7 +14,7 @@ or using morbo like in the other steps use
 ```
 morbo -l 'https://*:3000?cert=./server.crt&key=./server.key' script/session_tutorial
 ```
-To create the certificates, I was in the https directory and issued
+To create the certificates, I was in the top level directory and issued this command
 `openssl req -new -x509 -nodes -out server.crt -keyout server.key`
 
 
