@@ -2,9 +2,6 @@ package SessionTutorial::Controller::Tutorial;
 use Mojo::Base 'Mojolicious::Controller';
 use Net::LDAP qw/LDAP_INVALID_CREDENTIALS/;
 use YAML qw/LoadFile/;
-use Mojo::Log;
-
-my $log = Mojo::Log->new(path => 'log/access.log', level => 'info');
 
 #### Put these in config file ####
 
@@ -40,14 +37,10 @@ sub on_user_login {
     $self->session(username => $username);      # keep a copy of the username
     $self->session(expiration => 600);          # expire this session in 10 minutes
 
-    $log->info(join "\t", "Login succeeded: $username", $self->tx->remote_address);
-
     $self->stash(user => $username);
     $self->render(template => 'tutorial/welcome', format => 'html');
   } 
   else {
-    $log->info(join "\t", "Login FAILED: $username", $self->tx->remote_address);
-
     $self->render(
         text => '<h2>Login failed</h2><a href="/login">Try again</a>', 
         format => 'html', 

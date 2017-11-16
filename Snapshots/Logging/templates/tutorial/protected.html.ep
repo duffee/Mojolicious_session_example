@@ -1,0 +1,9 @@
+% layout 'default';
+% title 'Mojolicious session example - Page 4?';
+<h2>For <%= ucfirst $user %>'s eyes only</h2>
+This is a protected page that should only be accessible
+by successfully logged in users.
+
+<h2>Test the Logout</h2>
+Click here to
+%= link_to Logout => '/logout'

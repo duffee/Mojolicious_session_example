@@ -15,14 +15,44 @@ put it in the top level of the app.
 the attribute that you'll be filtering on and `id` is the name of the identifier
 of the LDAP entry (usually `dn`).
 
-This gets loaded into the file and populates the `$config` hashref on line 23.
-I used YAML because it's included in the Perl core.
+This gets loaded into the file and populates the `$config` hashref in the following code
+added to the top of the file along with the module dependancies.
+```
+use Net::LDAP qw/LDAP_INVALID_CREDENTIALS/;
+use YAML qw/LoadFile/;
+
+my $config = LoadFile('ldap_config.yml');
+my ($LDAP_server, $base_DN, $user_attr, $user_id, )
+        = @{$config}{ qw/server baseDN username id/ };
+```
+I used YAML because it's included in the Perl core.  Mojolicious has a Config module
+that I'll look at later.
 
 ### `check_credentials()`
+Replace the body of `check_credentials()` with the following
+```
+  my ($username, $password) = @_;
+  return unless $username;
+  return 1 if ($username eq 'julian' && $password eq 'carax');
+
+  my $ldap = Net::LDAP->new( $LDAP_server )
+        or warn("Couldn't connect to LDAP server $LDAP_server: $@"), return;
+
+  my $search = $ldap->search( base => $base_DN,
+                              filter => "$user_attr=$username",
+                              attrs => [$user_id],
+                            );
+  my $user_id = $search->pop_entry();
+  return unless $user_id;
+
+  my $login = $ldap->bind( $user_id, password => $password );
+
+  return $login->code == LDAP_INVALID_CREDENTIALS ? 0 : 1;
+```
 The first thing I do is make sure there's a `$username`.  An empty return is good for
 indicating a failed login.
-Line 30 is just there so that the test passes and should be removed from a production
-system, unless you want the backdoor there.
+The third line is just there so that the test passes and should be removed from a production
+system, unless you want an alternate authentication method there.
 `Net::LDAP->new` makes a connection to an LDAP server and `search`, searches the `base_DN`
 for `username=$username` and returns the `id` attribute for the user, if one exists.
 `return` if you don't have an `id` (line 40) or non-existant people can login.
@@ -30,9 +60,22 @@ Finally, bind to LDAP as the user with the password (line 43) and check the resu
 I imported the constant `LDAP_INVALID_CREDENTIALS` from Net::LDAP and checked 
 the return code of the bind.
 
-On line 39 when I pop the first entry off the search results, I am assuming that
+When I pop the first entry off the search results, I am assuming that
 there's only one match for the username because I only check the first result.
 This feels right, but perhaps not for everyone.
+
+### `is_logged_in()`
+Ooops!  I forgot that this method checked for a valid username, but those names aren't in
+my LDAP, so I needed to make the following changes.
+```
+my $allowed_user_re = qw/^\w{5,10}$/;
+
+sub is_logged_in {
+
+  return 1 if $self->session('logged_in') && $self->session('username') =~  /$allowed_user_re/;
+
+}
+```
 
 # Try it out
 First copy the file `ldap_config.sample.yml` to `ldap_config.yml` and edit
@@ -51,6 +94,9 @@ Of course, the tests for and requiring logins will fail using pure LDAP authenti
 because my example logins aren't in your LDAP.  Nothing stopping you from removing
 the dummy login and using a test account of your own to make sure that the
 app is connecting to your LDAP correctly.
+
+_The correct procedure is to "mock" the LDAP server, removing the dependancy on a
+live LDAP server and a valid account that lives in your test suite._
 
 ```
 script/session_tutorial test 
