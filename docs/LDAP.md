@@ -3,7 +3,7 @@
 We've made sure that the passwords are sent securely.  How about checking them
 against a common authentication method, like LDAP?
 
-## lib/LDAP/Controller/Login.pm
+## lib/SessionTutorial/Controller/Tutorial.pm
 
 I'm going to rip out the example stuff from the `check_credentials` method
 and replace it with an LDAP authorization call.
