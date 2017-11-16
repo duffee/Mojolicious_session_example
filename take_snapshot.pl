@@ -9,6 +9,8 @@ use strict;
 use v5.010;
 use File::Copy::Recursive qw/dircopy/;
 
+die "Stop editing files before taking a snapshot\n" if `find . -name "*.swp"`;
+
 my $name = ucfirst shift;
 die "Usage: $0 <name>\n" unless $name;
 
