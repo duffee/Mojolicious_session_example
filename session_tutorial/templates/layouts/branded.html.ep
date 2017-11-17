@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head><title><%= title %></title></head>
+  <body><%= content %></body>
+  <footer class="footer pull-right" style="margin-right:30px;">
+    <hr>
+    <div class="pull-right">
+      <a href="http://mojolicious.org/">
+      <img alt="Powered by Mojolcious" border="0" src="http://mojolicious.org/mojo/logo-black.png">
+      </a>
+    </div>
+  </footer>
+</html>

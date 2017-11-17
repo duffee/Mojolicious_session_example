@@ -142,3 +142,5 @@ and protect private pages from unauthorised users.  Instructions continue in [Se
 
 More on forms and logins can be found on Oliver G&uuml;nther's
 [Applications with Mojolicious](http://oliverguenther.de/2014/04/applications-with-mojolicious-part-three-forms-and-login/ 'Forms, Logins')
+or have a look at the Mojolicious Cookbook on
+[basic authentication](http://localhost:3000/perldoc/Mojolicious/Guides/Cookbook#Basic-authentication1)
