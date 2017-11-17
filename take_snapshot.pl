@@ -26,6 +26,7 @@ mkdir $directory;
 my $working_copy = 'session_tutorial';
 dircopy($working_copy, $directory) or die "Couldn't copy $working_copy to $directory: $!\n";
 unlink("$archive_dir/$name/ldap_config.yml");	# breaks the symlink
+system("rm $archive_dir/$name/log/*.log");	# remove log files
 
 say "Files copied to $directory";
 exit;

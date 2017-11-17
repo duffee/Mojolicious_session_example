@@ -103,9 +103,9 @@ script/session_tutorial test
 ```
 
 
-# Future Work
+# Next Step
 
-This tutorial finishes here, but if you're serious about security, you will start
+If you're serious about security, you will start
 to consider logging access to your app.  There are a number of blogs and pages that
 will get you going with logging.  Perhaps the quickest is
 [Mojolicious::Plugin::AccessLog](https://metacpan.org/pod/Mojolicious::Plugin::AccessLog),
@@ -120,10 +120,5 @@ There are a number of other solutions, such as log4perl, the ConsoleLogger plugi
 
 ## More information
 
-* [Mojo::Log](http://mojolicious.org/perldoc/Mojo/Log)
-* [Nyble's blog](http://pseudopoint.net/wp/?p=190)
-* [Logging and Testing](https://groups.google.com/forum/#!topic/mojolicious/X09J7ms7MQw)
-* [tempire's blog](http://blogs.perl.org/users/tempire/2011/02/logginz-ur-console-with-mojolicious.html)
-
-And in various examples in the 
-[Mojolicious::Guides::Cookbook](http://mojolicio.us/perldoc/Mojolicious/Guides/Cookbook)
+* [Net::LDAP](https://metacpan.org/pod/Net::LDAP)
+* [Perl LDAP](http://ldap.perl.org/)

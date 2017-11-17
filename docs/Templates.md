@@ -22,8 +22,10 @@ _some of this may depend on the bootstrap css that gets loaded in the template.
 this may not be good practice_
 
 ## templates/tutorial/protected.html.ep
-I've changed this template to use the new `branded` layout and told it to
-load the **Bootstrap CSS** which has a lot of useful stuff.
+I've changed this template to use the new `branded` layout 
+and used the `stylesheet` helper to load the 
+[Bootstrap CSS](https://getbootstrap.com/) 
+which has a lot of useful stuff.
 I've created a menu at the top in the `div` tags which only has
 the link to the Logout page.
 Now the top of the file looks like this
@@ -37,22 +39,36 @@ Now the top of the file looks like this
 </div>
 
 ```
+We should also do this to the `welcome.html.ep` template.  If we end up doing
+this to many templates, it feels like something that should move to a layout.
+Your choice.
+
+## public/
+For your own site, it might help to create `styles`, `js` and `images`
+directories under `public` to keep everything organized.
+
 
 # Try it out
 
 Authenticate at the [Login page](https://localhost:3000/login)
-and check `log/access.log` for something like 
+and look for the Logout link at the top right of the page.
+Feel smug at the mounting Laziness of rolling out site-wide UI changes
+with minimal effort.
+
+If you haven't got the Bootstrap stylesheet loaded, the logout link and Mojolicious logo
+will appear on the left side and the horizontal rule will extend across the page.
+You could do it yourself with the following code at the top of `templates/????/????`
 ```
-[Thu Nov 16 18:59:16 2017] [info] Login FAILED: francisco	127.0.0.1
-[Thu Nov 16 19:01:34 2017] [info] Login succeeded: julian	127.0.0.1
+%= stylesheet begin
+  .pull-right {float: right}
+% end
 ```
+which looks a little messy, but works and shows you how to add your own CSS to the page.
 
 # Test the app
 
-_TODO - I can't think of how to write a test that intercepts log messages._
+_TODO - could use the css selectors in Test::Mojo_
 
-In the test, you can change the log level using
-`$t->app->log->level('fatal');`
 
 ```
 script/session_tutorial test 
@@ -61,23 +77,16 @@ script/session_tutorial test
 
 # Next Step
 
-**This tutorial finishes here.**
-
+If a user asked for a protected page, it's only polite to return them to that page
+after they have authenticated.
 Instructions continue in [Redirect](Redirect.md).
 
 ## More information
-There are a number of blogs and pages that
-will get you going with logging.  Perhaps the quickest is
-[Mojolicious::Plugin::AccessLog](https://metacpan.org/pod/Mojolicious::Plugin::AccessLog),
-a plugin to easily generate an access log.  You only need to consider where the
-log will be and whether you want to customize the log format.  It's a one line command
-in both Mojolicious and Mojolicious::Lite.
 
-* [Mojo::Log](http://mojolicious.org/perldoc/Mojo/Log)
-* [Mojolicious::Plugin::AccessLog](https://metacpan.org/pod/Mojolicious::Plugin::AccessLog)
-* [Nyble's blog](http://pseudopoint.net/wp/?p=190)
-* [Logging and Testing](https://groups.google.com/forum/#!topic/mojolicious/X09J7ms7MQw)
-* [tempire's blog](http://blogs.perl.org/users/tempire/2011/02/logginz-ur-console-with-mojolicious.html)
+* [Layouts](http://mojolicious.org/perldoc/Mojolicious/Plugin/DefaultHelpers#layout)
+* [JavaScript and Stylesheet helpers](http://mojolicious.org/perldoc/Mojolicious/Plugin/TagHelpers)
+* [Mojo::Template](http://mojolicious.org/perldoc/Mojo/Template)
+* Test::Mojo [element_exists](https://metacpan.org/pod/Test::Mojo#element_exists) for checking style.
 
 And in various examples in the 
 [Mojolicious::Guides::Cookbook](http://mojolicio.us/perldoc/Mojolicious/Guides/Cookbook)
