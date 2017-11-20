@@ -105,18 +105,8 @@ script/session_tutorial test
 
 # Next Step
 
-If you're serious about security, you will start
-to consider logging access to your app.  There are a number of blogs and pages that
-will get you going with logging.  Perhaps the quickest is
-[Mojolicious::Plugin::AccessLog](https://metacpan.org/pod/Mojolicious::Plugin::AccessLog),
-a plugin to easily generate an access log.  You only need to consider where the
-log will be and whether you want to customize the log format.  It's a one line command
-in both Mojolicious and Mojolicious::Lite.
-
-For more control with a little more work, take a look at
-[Mojo::Log](https://metacpan.org/pod/Mojo::Log).
-I've been using it on one of my projects and it's not difficult.
-There are a number of other solutions, such as log4perl, the ConsoleLogger plugin, etc
+If you're serious about security, you will start to consider logging access to your app.
+Instructions continue in [Logging](Logging.md). 
 
 ## More information
 

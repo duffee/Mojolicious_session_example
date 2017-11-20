@@ -58,8 +58,6 @@ script/session_tutorial test
 
 # Next Step
 
-**This tutorial finishes here.**
-
 A navigational menu helps the user get where they want quickly.
 Let's move the `Logout` link to a template to make it available from all protected pages.
 Instructions continue in [Templates](Templates.md).
