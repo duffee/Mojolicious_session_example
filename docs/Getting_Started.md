@@ -1,11 +1,19 @@
 # Setting up a Mojolicious application
 
 In this tutorial, each step builds on the previous step.
+These instructions are written as if you are playing along at h
 The completed app is a single example that resides in
-the directory `session_tutorial`.
+the directory `session_tutorial` (which you will have already if you clone the 
+[git repository](https://github.com/duffee/Mojolicious_session_example) 
+along with other supporting material).
 All the instructions given assume that you are starting
 from scratch and tell you how to generate the final example
 shown in `session_tutorial`.
+If you want to start in the middle, have a look in the `Snapshots` directory of the repo.
+More about that at the end of this page.
+
+I assume that you're comfortable with running commands in Linux from a terminal window
+and that you have [Mojolicious](http://mojolicious.org/) installed.
 
 Let's get started.
 
