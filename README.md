@@ -12,6 +12,7 @@ This tutorial is the result of learning to put together a website with authentic
 and having to try out a few ideas after reading the documentation.
 I use it as a sandbox meaning that it follows my train of thought, 
 so it backtracks now and then as I learn something new (like Config files).
+You'll also see where I've run out of steam when TODOs start popping up in the text.
 
 Pointing out parts that are confusing would be a great help.
 I would welcome anything that identifies how a section could be clearer,
