@@ -3,6 +3,8 @@ A simple Mojolicious application example for authenticating a user and maintaini
 
 _**A Work In Progress**_
 
+Quick link to [the beginning](docs/Getting_Started.md) for the Impatient.
+
 # London Perl Workshop 2017
 If you've come here following the spamvertised links at the coffee break table,
 you'll find a tutorial in need of improvement, which _you can provide through your comments!_
@@ -43,7 +45,14 @@ The first step is in [Getting_Started](docs/Getting_Started.md).
 
 ## How to use this tutorial
 
+You can read everthing on Github or clone this repository to your machine.
+
 You can access the material in at least three ways:
 * Read the docs starting at [Getting_Started](docs/Getting_Started.md) and follow the instructions
 * Look at the code for the app built with the instructions in [session_tutorial](session_tutorial)
 * Dive into the [Snapshots](Snapshots) directory to look at the app at various stages of the build
+
+If you've cloned the repository, you can immediately run the final app in the **session_tutorial**
+directory or if you want to see a working example of the Step that you're reading, cd to the 
+directory of the same name in the **Snapshots** directory and run the app according to the instructions
+in the instructions.
