@@ -43,6 +43,9 @@ sub on_user_login {
     $log->info(join "\t", "Login succeeded: $username", $self->tx->remote_address);
 
     $self->stash(user => $username);
+    $self->redirect_to($self->session('calling_page')) if $self->session('calling_page');
+
+    #$self->redirect_to("/secure/user/$username");
     $self->render(template => 'tutorial/welcome', format => 'html');
   } 
   else {
@@ -86,6 +89,7 @@ sub is_logged_in {
   return 1 if $self->session('logged_in') && $self->session('username') =~  /$allowed_user_re/;
 
   # otherwise, inform them that they have to login and give them a link to the login page
+  $self->session(calling_page => $self->req->url);
   $self->render(
     inline => '<h2>Unauthorized access</h2>Please <a href="/login">login</a> first.',
     format => 'html',

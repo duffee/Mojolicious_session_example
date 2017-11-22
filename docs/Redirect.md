@@ -1,6 +1,40 @@
 # Re-directing
 
-_sigh - what do I want to say here?_
+_this is where I get confused about redirecting/rendering_
+
+## lib/SessionTutorial/Controller/Tutorial.pm
+
+When the user fails the `is_logged_in()` method, save the URL of the page in the session cookie
+using a parameter I'm calling **calling_page**.
+```
+sub is_logged_in {
+  my $self = shift;
+
+  return 1 if $self->session('logged_in') && $self->session('username') =~  /$allowed_user_re/;
+
+  $self->session(calling_page => $self->req->url);
+  $self->render(
+    inline => '<h2>Unauthorized access</h2>Please <a href="/login">login</a> first.',
+    format => 'html',
+    status => 401,
+  );
+  return undef;
+}
+```
+On successful authentication, check for the parameter **calling_page** and `redirect_to` that page
+instead of the default welcome page.
+```
+sub on_user_login {
+  my $self = shift;
+
+
+  if (check_credentials($username, $password)) {
+
+
+    $self->redirect_to($self->session('calling_page')) if $self->session('calling_page');
+    $self->render(template => 'tutorial/welcome', format => 'html');
+  }
+```
 
 # Try it out
 
