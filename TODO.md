@@ -21,7 +21,7 @@
 
 ## Logout
 
-* add a Logout button to attach to a template or layout
+* ~~add a Logout button to attach to a template or layout~~
 * add a test 04_logout.t to check successful logout and can't access protected/*
 
 ## HTTPS
@@ -32,7 +32,7 @@
 
 ## LDAP
 
-* add a sub that uses LDAP for authentication
+* ~~add a sub that uses LDAP for authentication~~
 
 # Suggestions for the future
 
@@ -40,7 +40,7 @@
 
 ## Logging
 
-* add logging for who is logs in and failed authetication
+* ~~add logging for who is logs in and failed authetication~~
 
 # Issues
 
