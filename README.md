@@ -1,7 +1,7 @@
 # Mojolicious session example
 A simple Mojolicious application example for authenticating a user and maintaining a session.
 
-_**A Work In Progress**_
+_**A Work In Progress - Not Ready for Production Use**_  I am still soliciting comments.
 
 Quick link for the Impatient to [Getting Started](docs/Getting_Started.md) on the example.
 
@@ -19,7 +19,7 @@ You'll also see where I've run out of steam when TODOs start popping up in the t
 The documentation seems more oriented towards getting users up and running quickly 
 with Mojolicious::Lite or for advanced developers.  I feel there's a gap in the middle.
 
-### [How you can help](How_to_Help.md)
+### [How you can help](CONTRIBUTING.md)
 
 Pointing out parts that are confusing would be a great help.
 I would welcome anything that identifies how a section could be clearer,

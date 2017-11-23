@@ -25,3 +25,11 @@ I may not accept your pull request on the basis it may require a lot of work
 bringing the Snapshots and instructions into line.  In those cases, I'll
 plan to include the changes suggested to keep the tutorial sensible
 while the work goes on.  PRs that save me work will be readily accepted.
+
+## Suggestions
+
+What is the next step making in the natural progession of the learning curve?
+Are there good locations to drop in exercises for the reader, 
+using tests in conjunction with a skeleton along the lines of the 
+[First Times Only](https://blog.kentcdodds.com/first-timers-only-78281ea47455)
+blog post?
