@@ -19,6 +19,8 @@ You'll also see where I've run out of steam when TODOs start popping up in the t
 The documentation seems more oriented towards getting users up and running quickly 
 with Mojolicious::Lite or for advanced developers.  I feel there's a gap in the middle.
 
+### [How you can help](How_to_Help.md)
+
 Pointing out parts that are confusing would be a great help.
 I would welcome anything that identifies how a section could be clearer,
 explainations of best practice, where I've missed something or what it just plain **wrong**.
@@ -26,7 +28,7 @@ I realize that some berks will blindly cut and paste these examples into their c
 and I really _don't_ want the reputation of 
 [Matt's Script Archive](https://en.wikipedia.org/wiki/Matt%27s_Script_Archive). 
 
-## What you can find here
+# What you can find here
 
 This example will show you how to 
 * [set up](docs/Getting_Started.md) a Mojolicious application
@@ -39,10 +41,10 @@ This example will show you how to
 * where to place pages that are publically accessible
 * add authentication via [LDAP](docs/LDAP.md)
 * write to a [logfile](docs/Logging.md)
+* create a logout link and place it on your [templates](docs/Templates.md)
 * [re-direct](docs/Redirect.md) to previous page after successful authentication
 
 if we get time we will show you how to
-* create a logout link and place it on your templates
 * use a config file to store system values
 * add a plugin module, such as Mojolicious::Plugin::OAuth2 and configure it
 

@@ -1,6 +1,8 @@
 # Re-directing
 
-_this is where I get confused about redirecting/rendering_
+I want to send a user a url to a resource that requires authentication.
+The application should see that the user hasn't authenticated, re-direct to a login page
+and then _return to the original url_ having successfully logged in.  That's just polite.
 
 ## lib/SessionTutorial/Controller/Tutorial.pm
 
@@ -35,6 +37,13 @@ sub on_user_login {
     $self->render(template => 'tutorial/welcome', format => 'html');
   }
 ```
+
+### Comment on storing parameters
+In my real application, I stored **calling_page** in the `flash`, 
+but I couldn't replicate the behaviour in this simplified application,
+likely because I don't fully understand the routing lifecycle.
+Storing the calling_page in the cookie sounds like it will work in more cases.
+Better for beginners?
 
 # Try it out
 

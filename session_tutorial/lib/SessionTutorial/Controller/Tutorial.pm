@@ -44,8 +44,6 @@ sub on_user_login {
 
     $self->stash(user => $username);
     $self->redirect_to($self->session('calling_page')) if $self->session('calling_page');
-
-    #$self->redirect_to("/secure/user/$username");
     $self->render(template => 'tutorial/welcome', format => 'html');
   } 
   else {
