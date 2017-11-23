@@ -49,6 +49,7 @@ sub is_logged_in {
 		inline => '<h2>Unauthorized access</h2>Please <a href="/login">login</a> first.',
 		status => 401
 	);
+	return;	# sri - return a false value after the render call to break the dispatch chain.
 }
 
 1;

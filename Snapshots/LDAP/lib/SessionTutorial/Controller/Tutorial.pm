@@ -84,7 +84,7 @@ sub is_logged_in {
     format => 'html',
     status => 401,
   );
-  return undef;
+  return;
 }
 
 sub protected {
