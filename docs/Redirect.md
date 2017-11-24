@@ -7,7 +7,8 @@ and then _return to the original url_ having successfully logged in.  That's jus
 ## lib/SessionTutorial/Controller/Tutorial.pm
 
 When the user fails the `is_logged_in()` method, save the URL of the page in the session cookie
-using a parameter I'm calling **calling_page**.
+using a parameter I'm calling **calling_page** and return a false value (the bare `return;`
+after the `$self->render` is false).
 ```
 sub is_logged_in {
   my $self = shift;
@@ -20,7 +21,7 @@ sub is_logged_in {
     format => 'html',
     status => 401,
   );
-  return undef;
+  return;
 }
 ```
 On successful authentication, check for the parameter **calling_page** and `redirect_to` that page

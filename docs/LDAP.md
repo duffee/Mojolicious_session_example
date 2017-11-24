@@ -74,8 +74,13 @@ sub is_logged_in {
 
   return 1 if $self->session('logged_in') && $self->session('username') =~  /$allowed_user_re/;
 
+
+  return;
 }
 ```
+Second ooops - an old version of this method ended with rendering a page saying Unauthorized Access.
+Having failed, we should ensure that the method returns false (the bare `return;` at the end returns
+undef in scalar context and the empty list in list context, both evaluate to false)
 
 # Try it out
 First copy the file `ldap_config.sample.yml` to `ldap_config.yml` and edit
