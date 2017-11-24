@@ -87,3 +87,11 @@ which you can find in `Snapshots/Getting_Started`.
 If at any time you want to go back to an earlier step,
 simply stop the server, `cd` to the step in the `Snapshots` directory
 and start the server there using `morbo script/session_tutorial`.
+
+# More Information
+
+In many places, I've assumed that you have already seen some of the copious
+[Mojolicious documentation](http://mojolicious.org/perldoc/Mojolicious/Guides).
+Here is a list of 
+[Concepts you need to know](http://mojolicious.org/perldoc/Mojolicious/Guides/Growing#CONCEPTS)
+for growing as a web programmer.

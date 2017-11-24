@@ -4,7 +4,9 @@ You are serious about security auditing, so you want to log access to your app.
 
 I've added 
 [Mojo::Log](https://metacpan.org/pod/Mojo::Log)
-to the Controller.
+to the Controller.  I could have used
+[Mojolicious::Plugin::AccessLog](https://metacpan.org/pod/Mojolicious::Plugin::AccessLog)
+which is simpler - not sure why I decided on `Mojo::Log`.
 
 ## lib/SessionTutorial/Controller/Tutorial.pm
 
@@ -71,7 +73,8 @@ log will be and whether you want to customize the log format.  It's a one line c
 in both Mojolicious and Mojolicious::Lite.
 
 * [Mojo::Log](http://mojolicious.org/perldoc/Mojo/Log)
-* [Mojolicious::Plugin::AccessLog](https://metacpan.org/pod/Mojolicious::Plugin::AccessLog)
+* [Mojolicious::Plugin::AccessLog](https://metacpan.org/pod/Mojolicious::Plugin::AccessLog) for simple no-brainer logging
+* [Mojolicious::Plugin::Log::Access](https://metacpan.org/pod/Mojolicious::Plugin::Log::Access)
 * [Nyble's blog](http://pseudopoint.net/wp/?p=190)
 * [Logging and Testing](https://groups.google.com/forum/#!topic/mojolicious/X09J7ms7MQw)
 * [tempire's blog](http://blogs.perl.org/users/tempire/2011/02/logginz-ur-console-with-mojolicious.html)

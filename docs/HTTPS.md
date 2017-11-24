@@ -58,3 +58,5 @@ a real authentication source.  Instructions continue in [LDAP](LDAP.md).
 
 How to create your own self-signed certificates
 [Apache SSL FAQ](https://httpd.apache.org/docs/current/ssl/ssl_faq.html)
+
+Investigate [Mojo::ACME](https://metacpan.org/pod/Mojo::ACME) as a better alternative.
