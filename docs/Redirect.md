@@ -77,3 +77,5 @@ Instructions continue in [Config](Config.md).
 
 And in various examples in the 
 [Mojolicious::Guides::Cookbook](http://mojolicio.us/perldoc/Mojolicious/Guides/Cookbook)
+
+_TODO - add link to HTTP re-directing_

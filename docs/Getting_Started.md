@@ -1,7 +1,28 @@
+Imagine yourself just starting out in learning Model-View-Controller (MVC) web development.
+Your goal is a web service that authenticates a user before allowing them into the main site.
+You've looked at the 
+[Mojolicious::Lite Tutorial](http://mojolicious.org/perldoc/Mojolicious/Guides/Tutorial)
+and Glen Hinkle's 
+_Mojocasts_
+and getting the hang of routes and rendering, but you feel your project might need to
+[Grow](http://mojolicious.org/perldoc/Mojolicious/Guides/Growing)
+from a prototype into a structured application.
+The [Mojolicious documentation](http://mojolicious.org/perldoc/Mojolicious/Guides)
+is **great**, but there's a lot of it to sift through and concepts to get your head around.
+Wouldn't it be nice if someone in your situation left you some notes of how problems were solved,
+questions answered on the 
+[maillist](http://groups.google.com/group/mojolicious)
+(or the official 
+[IRC channel](https://chat.mibbit.com/?channel=%23mojo&server=irc.perl.org) 
+`#mojo` on `irc.perl.org`)
+and gathered it into one place?  This is what I've learnt so far.
+
+
 # Setting up a Mojolicious application
 
 In this tutorial, each step builds on the previous step.
-These instructions are written as if you are playing along at h
+These instructions are written as if you are entering the commands
+and adding code to the files that are generated.
 The completed app is a single example that resides in
 the directory `session_tutorial` (which you will have already if you clone the 
 [git repository](https://github.com/duffee/Mojolicious_session_example) 
@@ -40,6 +61,8 @@ and see the Welcome page.
 `morbo` is one of the built-in webservers that ships with Mojolicious.  
 It's portable and self-restart capable, making it perfect for development and testing.
 
+_TODO - Link to documentation on `morbo`_
+
 ## Testing the application
 
 We will include test files to verify the application works as described
@@ -52,6 +75,8 @@ The **prove** program runs the test harness and the **-Ilib** argument
 adds the application library directory to your path.
 You will need to have 
 [Test::Mojo](https://metacpan.org/pod/Test::Mojo) installed to run these tests.   
+
+_TODO - Link to documentation on `prove`_
 
 To verify that your Mojolicious will start up successfully (other than by using a browser), run
 ```

@@ -43,6 +43,8 @@ change `$r->get('/')->to('example#welcome');`
 to `$r->get('/')->to('Tutorial#start');` and add a new route
 `$r->get('/login')->to('Tutorial#login');`
 
+A [route](http://mojolicious.org/perldoc/Mojolicious/Guides/Routing#CONCEPTS)
+directs your request to the code that generates the response.
 The route to the controller has two parts.  
 The `Tutorial` before the `#` looks for `lib/SessionTutorial/Controller/Tutorial.pm` 
 and looks for a sub in the controller file with the same name as the part following the `#` sign,
@@ -93,6 +95,11 @@ sub start {
 
 1;
 ```
+
+_TODO - this needs more explanation of how the **action** in the **Controller**
+is directed to the **template**.  Link to 
+[Rendering](http://localhost:3000/perldoc/Mojolicious/Guides/Rendering)
+_
 
 ## templates/tutorial/start.html.ep
 
@@ -186,6 +193,8 @@ and run
 ```
 script/session_tutorial test t/basic.t
 ```
+Read more about 
+[testing Mojolicious applications](http://mojolicious.org/perldoc/Mojolicious/Guides/Testing)
 
 # Next Step
 
@@ -204,5 +213,7 @@ using the instructions in [Authenticate](Authenticate.md)
 
 ## More information
 
-More on rendering and validating forms can be found on 
+More on directing requests to the Controller can be found on
+[Mojolicious::Guides::Routing](http://mojolicious.org/perldoc/Mojolicious/Guides/Routing)
+More on rendering web pages and validating forms can be found on 
 [Mojolicious::Guides::Rendering](http://localhost:3000/perldoc/Mojolicious/Guides/Rendering)

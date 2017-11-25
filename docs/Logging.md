@@ -37,6 +37,8 @@ This log stores all the messages from `morbo` such as routing and rendering.
 If you're running `hypnotoad` in a production environment, the log name will
 be `log/production.log`, naturally.
 
+_TODO - add link to hypnotoad and explain_
+
 # Try it out
 
 Authenticate at the [Login page](https://localhost:3000/login)

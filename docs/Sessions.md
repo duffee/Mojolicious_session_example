@@ -1,6 +1,6 @@
 # Sessions
 
-This step will show you how to protect your pages.
+This step will show you how to protect your pages by maintaining a Session.
 
 We'll look at these 3 files
 * lib/SessionTutorial.pm
@@ -23,6 +23,10 @@ That's been a faff trying to get `under` working
 #### END #####
 
 # How `under` works
+A full explanation of 
+[under](http://mojolicious.org/perldoc/Mojolicious/Guides/Routing#Under)
+is in the documentation.
+
 First you need to define a route in **lib/SessionTutorial.pm**
 like these two protected pages
 ```
@@ -99,3 +103,5 @@ Detail on sessions can be found in the
 [online documentation](http://localhost:3000/perldoc/Mojolicious/Controller#session 'Mojolicious::Controller').
 More on forms and logins can be found on Oliver G&uuml;nther's
 [Applications with Mojolicious](http://oliverguenther.de/2014/04/applications-with-mojolicious-part-three-forms-and-login/ 'Forms, Logins')
+
+_TODO - add link to Sessions and security_

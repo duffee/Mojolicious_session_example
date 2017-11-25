@@ -2,7 +2,9 @@
 
 You want a consistent look and feel to your site without maintenance headaches.
 You want a navigation menu to follow the user around the site.
-You want to customize your **templates** and **layouts**.
+You want to customize your 
+**[templates](http://www.mojolicious.org/perldoc/Mojolicious/Guides/Rendering#Rendering-templates)** 
+and **[layouts](http://www.mojolicious.org/perldoc/Mojolicious/Guides/Rendering#Layouts)**.
 
 More experienced UX developers can explain the rationale for what content
 goes in layouts and what goes in templates.  I've made the naive choice
@@ -90,3 +92,5 @@ Instructions continue in [Redirect](Redirect.md).
 
 And in various examples in the 
 [Mojolicious::Guides::Cookbook](http://mojolicio.us/perldoc/Mojolicious/Guides/Cookbook)
+
+_TODO - add links to UX and UI design, CSS and JS_

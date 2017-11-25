@@ -9,8 +9,8 @@ I'm going to rip out the example stuff from the `check_credentials` method
 and replace it with an LDAP authorization call.
 
 ### ldap_config.yml
-I put all my LDAP server config values in a file called `ldap_config.yml` and
-put it in the top level of the app.
+I put all my LDAP server config values in a file called `ldap_config.yml`
+and put it in the top level of the app.
 `baseDN` is the DN of the tree where you search for users, `username` is the name of 
 the attribute that you'll be filtering on and `id` is the name of the identifier
 of the LDAP entry (usually `dn`).
@@ -25,8 +25,8 @@ my $config = LoadFile('ldap_config.yml');
 my ($LDAP_server, $base_DN, $user_attr, $user_id, )
         = @{$config}{ qw/server baseDN username id/ };
 ```
-I used YAML because it's included in the Perl core.  Mojolicious has a Config module
-that I'll look at later.
+I used YAML because it's included in the Perl core and I was used to it.
+Mojolicious has a **Config** plugin that I'll look at later.
 
 ### `check_credentials()`
 Replace the body of `check_credentials()` with the following

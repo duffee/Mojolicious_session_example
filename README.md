@@ -7,8 +7,10 @@ Quick link for the Impatient to [Getting Started](docs/Getting_Started.md) on th
 
 # London Perl Workshop 2017
 If you've come here following the spamvertised links at the coffee break table,
-you'll find a tutorial in need of improvement, which _you can provide through your comments!_
-Either raise an issue on Github or email me at b.duffee at keele dot ac.uk.
+you'll find a tutorial in need of improvement, which _you can provide 
+[through your comments](docs/CONTRIBUTING.md)!_
+Either raise an [issue](https://github.com/duffee/Mojolicious_session_example/issues) 
+on Github or email me at **b.duffee at keele dot ac.uk**.
 
 **I am not an expert.**
 This tutorial is the result of learning to put together a website with authenticated access

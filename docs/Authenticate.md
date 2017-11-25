@@ -45,7 +45,7 @@ sub check_credentials {
     return 1;
   }
 
-  return undef;
+  return;
 }
 ```
 
@@ -68,10 +68,14 @@ The render used in the successful login directs the output to a template
 ## templates/tutorial/login.html.ep
 fixed the form_for line to use the named route 'do_login'
 
+_TODO - what is a **named route** and why is it useful?_
+
 ## templates/tutorial/welcome.html.ep
 Added a new template as a landing page for successful logins,
 which is a good place to put messages and links to the content 
 that the user can access.
+
+_TODO - talk briefly about **templates**_
 
 #### NOTES ####
 
@@ -130,3 +134,5 @@ More on forms and logins can be found on Oliver G&uuml;nther's
 [Applications with Mojolicious](http://oliverguenther.de/2014/04/applications-with-mojolicious-part-three-forms-and-login/ 'Forms, Logins')
 or have a look at the Mojolicious Cookbook on
 [basic authentication](http://localhost:3000/perldoc/Mojolicious/Guides/Cookbook#Basic-authentication1)
+
+_TODO - add link to explanations of GET/POST_
