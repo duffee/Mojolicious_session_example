@@ -9,3 +9,5 @@ I'd like to thank the following for their comments and solutions.
 * Stefan Adams
 * Oliver Günther
 * Dan Book
+* sri
+* TBSliver
