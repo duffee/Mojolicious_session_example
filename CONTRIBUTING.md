@@ -3,6 +3,10 @@
 The process of writing and editing means that there are many rough edges in the tutorial.
 Fresh eyes see them more clearly.
 
+The best way to suggest changes is to raise an
+[Issue](https://github.com/duffee/Mojolicious_session_example/issues)
+You can also email me at b dot duffee at keele dot ac dot uk.
+
 ## Instructions
 
 Don't know much about Mojolicious?  **Great!**
@@ -16,6 +20,13 @@ Know lots about Mojolicious?  **Great!**  'cuz I don't.
 People in a rush will copy/paste code from anywhere.  Let me know
 what is best practice and you might not have to clean up a big mess later.
 
+### Quoting code
+
+A quick way of quoting a bit of code is to copy the URL from the file in github
+and stick the start and end line numbers (e.g. `#L1-L2`) on the end.
+It takes the browser to the file and highlights lines 1 and 2.
+e.g. the login method is currently at
+`https://github.com/duffee/Mojolicious_session_example/blob/master/session_tutorial/lib/SessionTutorial/Controller/Tutorial.pm#L25-L30`
 
 ## Pull Requests
 
