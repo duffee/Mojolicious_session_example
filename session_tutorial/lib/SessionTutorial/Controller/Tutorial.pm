@@ -8,6 +8,7 @@ my $log = Mojo::Log->new(path => 'log/access.log', level => 'info');
 my %Login_Attempts;
 my $MAX_LOGIN_ATTEMPTS = 3;
 my $DURATION_BLOCKED = 30 * 60;
+my $TIMEOUT_FAILED_LOGIN = 1;
 
 #### Put these in config file ####
 
@@ -43,14 +44,15 @@ sub on_user_login {
     $self->session(username => $username);      # keep a copy of the username
     $self->session(expiration => 600);          # expire this session in 10 minutes
 
-    $log->info(join "\t", "Login succeeded: $username", $self->tx->remote_address);
+    record_login_attempt($self, 'SUCCESS');
 
     $self->stash(user => $username);
     $self->redirect_to($self->session('calling_page')) if $self->session('calling_page');
     $self->render(template => 'tutorial/welcome', format => 'html');
   } 
   else {
-    $log->info(join "\t", "Login FAILED: $username", $self->tx->remote_address);
+    record_login_attempt($self, 'FAILED');
+    sleep $TIMEOUT_FAILED_LOGIN;
 
     $self->render(
         text => '<h2>Login failed</h2><a href="/login">Try again</a>', 
@@ -125,6 +127,5 @@ sub record_login_attempt {
     }
   }
 }
-  
 
 1;
