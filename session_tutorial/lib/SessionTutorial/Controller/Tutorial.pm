@@ -39,7 +39,14 @@ sub on_user_login {
   my $username = $self->param('username');
   my $password = $self->param('password');
 
-  if (check_credentials($username, $password)) {
+  if ( is_denied($self) ) {
+    $self->render(
+        text => '<h2>Access blocked</h2>Too many failed login attempts.  Try again later', 
+        format => 'html', 
+        status => 403
+    );
+  }
+  elsif (check_credentials($username, $password)) {
     $self->session(logged_in => 1);             # set the logged_in flag
     $self->session(username => $username);      # keep a copy of the username
     $self->session(expiration => 600);          # expire this session in 10 minutes
@@ -112,20 +119,38 @@ sub record_login_attempt {
   my ($self, $result) = @_;
 
   my $user = $self->params('username');
-  my $ipadd = $self->tx->remote_address;
+  my $ip_address = $self->tx->remote_address;
 
   if ($result eq 'SUCCESS') {
-    $log->info(join "\t", "Login succeeded: $user", $ipadd);
-    $Login_Attempts{$ipadd}->{tries} = 0;	# reset the number of login attempts
+    $log->info(join "\t", "Login succeeded: $user", $ip_address);
+    $Login_Attempts{$ip_address}->{tries} = 0;	# reset the number of login attempts
   }
   else {
     $log->info(join "\t", "Login FAILED: $user", $self->tx->remote_address);
 
-    $Login_Attempts{$ipadd}->{tries}++;
-    if ( $Login_Attempts{$ipadd}->{tries} > $MAX_LOGIN_ATTEMPTS ) {
-      $Login_Attempts{$ipadd}->{denied_until} = localtime() + $DURATION_BLOCKED;
+    $Login_Attempts{$ip_address}->{tries}++;
+    if ( $Login_Attempts{$ip_address}->{tries} > $MAX_LOGIN_ATTEMPTS ) {
+      $Login_Attempts{$ip_address}->{denied_until} = time() + $DURATION_BLOCKED;
     }
   }
+}
+
+sub is_denied {
+  my ($self) = @_;
+
+  my $ip_address = $self->tx->remote_address;
+
+  return unless exists $Login_Attempts{$ip_address}
+        && exists $Login_Attempts{$ip_address}->{denied_until};
+
+  return 'Denied'
+    if $Login_Attempts{$ip_address}->{denied_until} > time();
+
+  # TIMEOUT has expired, reset attempts
+  delete $Login_Attempts{$ip_address}->{denied_until};
+  $Login_Attempts{$ip_address}->{tries} = 0;
+
+  return;
 }
 
 1;
