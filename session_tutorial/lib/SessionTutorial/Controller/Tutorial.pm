@@ -5,6 +5,9 @@ use YAML qw/LoadFile/;
 use Mojo::Log;
 
 my $log = Mojo::Log->new(path => 'log/access.log', level => 'info');
+my %Login_Attempts;
+my $MAX_LOGIN_ATTEMPTS = 3;
+my $DURATION_BLOCKED = 30 * 60;
 
 #### Put these in config file ####
 
@@ -103,5 +106,25 @@ sub protected {
   $self->render(user => $username, template => 'tutorial/protected');
 }
 
+sub record_login_attempt {
+  my ($self, $result) = @_;
+
+  my $user = $self->params('username');
+  my $ipadd = $self->tx->remote_address;
+
+  if ($result eq 'SUCCESS') {
+    $log->info(join "\t", "Login succeeded: $user", $ipadd);
+    $Login_Attempts{$ipadd}->{tries} = 0;	# reset the number of login attempts
+  }
+  else {
+    $log->info(join "\t", "Login FAILED: $user", $self->tx->remote_address);
+
+    $Login_Attempts{$ipadd}->{tries}++;
+    if ( $Login_Attempts{$ipadd}->{tries} > $MAX_LOGIN_ATTEMPTS ) {
+      $Login_Attempts{$ipadd}->{denied_until} = localtime() + $DURATION_BLOCKED;
+    }
+  }
+}
+  
 
 1;
