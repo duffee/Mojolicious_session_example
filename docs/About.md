@@ -26,6 +26,8 @@ Running ```mojo version``` on my machine gives
 
 Things I've been told:
 
+## return false after failing authentication
+
 
 # Acknowledgements
 

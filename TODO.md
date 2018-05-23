@@ -52,3 +52,14 @@ I found
 in Login - lib/SessionTutorial.pm.  Where should this go?
 
 
+# Hypothetical TODOs
+
+* compare Redis2 plugin with MojoX::Plugin::AnyCache plugin (on github)
+* look at Task::MojoliciousPlugins::PerlAcademy for modules to include and demonstrate
+such as [YubiVerify](https://metacpan.org/pod/Mojolicious::Plugin::YubiVerify)
+* my word, there's a YAML plugin for Mojo - why did nobody tell me?
+* Web Auth plugin
+* I18N and I18NUtils plugins
+* PageNavigator and BootstrapPagination
+* SSO with CAS
+* Oliver was going to do Dist::Zilla and deployment

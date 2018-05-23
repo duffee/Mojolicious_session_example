@@ -49,6 +49,8 @@ This example will show you how to
 if we get time we will show you how to
 * use a config file to store system values
 * add a plugin module, such as Mojolicious::Plugin::OAuth2 and configure it
+* speed up serving dynamic web pages using a cache, such as 
+[Redis](https://metacpan.org/pod/MojoX::Redis2)
 
 Instructions on how to build this application are found in **docs/**.
 The first step is in [Getting_Started](docs/Getting_Started.md).
