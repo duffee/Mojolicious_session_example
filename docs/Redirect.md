@@ -66,9 +66,9 @@ script/session_tutorial test
 
 # Next Step
 
-**This tutorial finishes here.**
+Let's take a look back at authentication for a minute.
 
-Instructions continue in [Config](Config.md).
+Instructions continue in [Authenticate2](Authenticate2.md).
 
 ## More information
 
