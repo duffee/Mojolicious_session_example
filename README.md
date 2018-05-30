@@ -45,9 +45,10 @@ This example will show you how to
 * write to a [logfile](docs/Logging.md)
 * create a logout link and place it on your [templates](docs/Templates.md)
 * [re-direct](docs/Redirect.md) to previous page after successful authentication
+* [protect your login page](docs/Authenticate2.md) against brute force attacks
 
 if we get time we will show you how to
-* use a config file to store system values
+* use a [config file](docs/Config.md) to store system values
 * add a plugin module, such as Mojolicious::Plugin::OAuth2 and configure it
 * speed up serving dynamic web pages using a cache, such as 
 [Redis](https://metacpan.org/pod/MojoX::Redis2)

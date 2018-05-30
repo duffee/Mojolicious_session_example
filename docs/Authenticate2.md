@@ -106,7 +106,7 @@ script/session_tutorial test t/01_login.t
 
 **This tutorial finishes here.**
 
-Instructions continue in [Authenticate2](Authenticate2.md).
+Instructions continue in [Config](Config.md).
 
 ## More information
 
