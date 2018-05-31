@@ -12,7 +12,10 @@ my $TIMEOUT_FAILED_LOGIN = 1;
 
 #### Put these in config file ####
 
-my $config = LoadFile('ldap_config.yml');                               # file is at same level as lib/
+my $config;
+my $config_file = 'ldap_config.sample.yml';
+#$config = LoadFile($config_file) if -e $config_file;            # file is at same level as lib/
+$config = LoadFile($config_file);
 my ($LDAP_server, $base_DN, $user_attr, $user_id, )
         = @{$config}{ qw/server baseDN username id/ };          # this is a hash slice, they're pretty cool
 
@@ -72,7 +75,7 @@ sub on_user_login {
 sub check_credentials {
   my ($username, $password) = @_;
   return unless $username;
-  return 1 if ($username eq 'julian' && $password eq 'carax');        # needed for the tests to pass
+  #return 1 if ($username eq 'julian' && $password eq 'carax');        # needed for the tests to pass
 
   my $ldap = Net::LDAP->new( $LDAP_server )
         or warn("Couldn't connect to LDAP server $LDAP_server: $@"), return;
@@ -82,6 +85,7 @@ sub check_credentials {
                               attrs => [$user_id],
                             );
   my $user_id = $search->pop_entry();
+warn "No user $username" unless $user_id;
   return unless $user_id;                             # does this user exist in LDAP?
 
   # this is where we check the password
@@ -118,7 +122,7 @@ sub protected {
 sub record_login_attempt {
   my ($self, $result) = @_;
 
-  my $user = $self->params('username');
+  my $user = $self->param('username');
   my $ip_address = $self->tx->remote_address;
 
   if ($result eq 'SUCCESS') {
