@@ -16,7 +16,7 @@ $t->get_ok('/login')->status_is(200)->content_like(qr/Username/i);
 
 # successful login
 $t->post_ok('/login' => {Accept => '*/*'} => form => {username => 'julian', password => 'carax'})
-  ->status_is(200)
+  ->status_is(302, 'Redirected to Welcome page')
   ->content_like(qr/Welcome, julian/i);
 
 # check that the logout works as intended
