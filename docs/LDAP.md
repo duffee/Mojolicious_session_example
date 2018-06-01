@@ -103,6 +103,8 @@ app is connecting to your LDAP correctly.
 _The correct procedure is to "mock" the LDAP server, removing the dependancy on a
 live LDAP server and a valid account that lives in your test suite._
 
+You'll need to have `Test::Net::LDAP::Mock` installed to run the test
+
 ```
 script/session_tutorial test 
 ```
