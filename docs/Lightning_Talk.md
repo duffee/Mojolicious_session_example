@@ -1,6 +1,6 @@
-# Learning to Manage Sessions with Mojolicious - Lightning talk
+# Learning to Manage Sessions with Mojolicious - Lightning talk, Mojoconf 2018
 
-**Tl;dr - we need more Hubris - specifically intermediate Hubris**
+**Tl;dr - we need more Hubris⁰ - specifically intermediate Hubris**
 
 There’s plenty of good, basic documentation and there is sufficient high-level 
 documentation to make things work, but it’s all over the place.
@@ -16,6 +16,11 @@ finish quicker and tell me how to do it better.
 
 I told $work that I was staying on Saturday to hack, so if this talk interests you,
 perhaps we can make it better.
+
+⁰ **Hubris** Excessive pride - makes you write and maintain programs that other people
+won't want to say bad things about.  Hence, the third great virtue of a programmer.
+Wall, Christiansen & Schwartz, _Programming Perl, 2nd ed_, O'Reilly 1996, p607.
+_or do I really mean Laziness?_
 
 
 ## Steps required to add Authentication to your App
@@ -63,9 +68,9 @@ Here's a few ideas of where you could take the code and make it your own.
 or forget the tutorial and just write code
 
 * Provide a template **lib/App/Controller/Authenticate.pm** and tell people how to use it
-* Re-write MojoX::Auth::Simple to handle LDAP
- * Abstract out an Auth base class to handle common methods for Simple, LDAP, OAuth2, etc
-* Auto-generate templates with mojo generate session_app (yours to write)
+* Re-write **MojoX::Auth::Simple** to handle LDAP
+    * Abstract out an **Auth.pm** base class to handle common methods for Simple, LDAP, OAuth2, etc
+* Auto-generate templates with ```mojo generate session_app``` _(yours to write)_
 
 Don't forget to document.
 
@@ -76,7 +81,7 @@ These modules implement authorization with Mojolicious.  I haven't had the time 
 them, but some of them could serve as a better starting point for accomplishing more generalized
 authentication or as inspiration for how re-invent a better wheel.
 
-* [MojoX::Auth::Simple](https://metacpan.org/pod/MojoX::Auth::Simple) - passwords stored in DB
+* [MojoX::Auth::Simple](https://metacpan.org/pod/MojoX::Auth::Simple) - stores passwords in a database
 * [MojoX::Session](https://metacpan.org/pod/MojoX::Session)
 * [Yancy::Plugin::Auth::Basic](https://metacpan.org/pod/Yancy::Plugin::Auth::Basic) - new CMS for Mojolicious
 * [Mojolicious::Plugin::OAuth2](https://metacpan.org/pod/Mojolicious::Plugin::OAuth2) - haven’t had time to look at it
