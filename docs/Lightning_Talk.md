@@ -23,23 +23,23 @@ perhaps we can make it better.
 * Login page - in templates
 * Route to Login
 * Controller
- * Checks credentials
-  * If authenticated
-    * set session cookie
-    * Go to Home page or re-direct to calling page
-   * If failed
-    * Sleep 3 seconds
-    * Count number of failures
-    * Block access if too many failures
-    * Return to Login page with message
+    * Checks credentials
+        * If authenticated
+            * set session cookie
+            * Go to Home page or re-direct to calling page
+        * If failed
+            * Sleep 3 seconds
+            * Count number of failures
+            * Block access if too many failures
+            * Return to Login page with message
 * How to protect a set of pages
 * Write the login success/failure to a logfile
 * Create a logout link on your layout
 * Route to Logout
 * Controller removes session cookie and redirects to leaving page
 * Write tests to check authentication, access control
- * Having issues with using a test account in the code
- * Use a config file instead of $HARNESS_ACTIVE
+    * Having issues with using a test account in the code
+    * Use a config file instead of $HARNESS_ACTIVE
 
 Also consider:
 * changing the authentication from LDAP to OAuth2
