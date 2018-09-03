@@ -86,6 +86,20 @@ which stores the session in a database.
 
 _I haven't really looked at it yet.  I should._
 
+From [MojoX::Auth::Simple](https://metacpan.org/pod/MojoX::Auth::Simple)
+it looks like you can use the module as a plugin like this (check the docs)
+```
+plugin session => {
+  stash_key => 'session',
+  transport => MojoX::Session::Transport::Cookie->new,
+  store => MojoX::Session::Store::Dbi->new(dbh  => $dbh),
+  expires_delta => 900,
+};
+```
+
+Hopefully, I can steal some example code at 
+[Mojoconf](http://oslo.pm/npw2018/)
+
 # Change the Secret Passphrase
 
 _only required for older versions of Mojolicious - older than 6.x_
