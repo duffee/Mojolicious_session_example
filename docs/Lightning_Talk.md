@@ -86,7 +86,7 @@ them, but some of them could serve as a better starting point for accomplishing 
 authentication or as inspiration for how re-invent a better wheel.
 
 * [MojoX::Auth::Simple](https://metacpan.org/pod/MojoX::Auth::Simple) - stores passwords in a database
-* [MojoX::Session](https://metacpan.org/pod/MojoX::Session)
+* [MojoX::Session](https://metacpan.org/pod/MojoX::Session) - stores sessions in a database
 * [Yancy::Plugin::Auth::Basic](https://metacpan.org/pod/Yancy::Plugin::Auth::Basic) - new CMS for Mojolicious
 * [Mojolicious::Plugin::OAuth2](https://metacpan.org/pod/Mojolicious::Plugin::OAuth2) - haven’t had time to look at it
 * [OAuth::Cmdline::Mojo](https://metacpan.org/pod/OAuth::Cmdline::Mojo) - not much documentation
