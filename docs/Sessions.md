@@ -77,9 +77,18 @@ Make sure we can maintain sessions
 script/session_tutorial test 
 ```
 
+# MojoX::Session
+
+If you're concerned that people will mess with your session cookie
+in the browser, you can maintain the session on the server-side with
+[MojoX::Session](https://metacpan.org/pod/MojoX::Session)
+which stores the session in a database.
+
+_I haven't really looked at it yet.  I should._
+
 # Change the Secret Passphrase
 
-_only required for older versions of Mojolicious (older than 6.??) _
+_only required for older versions of Mojolicious - older than 6.x_
 
 It's advisable to change the Secret Passphrase
 that is used in security features such as signed cookies, which we're using to keep sessions.
