@@ -32,12 +32,16 @@ _or do I really mean Laziness?_
         * If authenticated
             * set session cookie
             * Go to Home page or re-direct to calling page
+            * 
         * If failed
             * Sleep 3 seconds
             * Count number of failures
             * Block access if too many failures
             * Return to Login page with message
 * How to protect a set of pages
+    * Every time a protected page is requested
+        * Check for the session cookie
+        * Update the expiry date on the cookie to 10 minutes from now
 * Write the login success/failure to a logfile
 * Create a logout link on your layout
 * Route to Logout
@@ -82,7 +86,7 @@ them, but some of them could serve as a better starting point for accomplishing 
 authentication or as inspiration for how re-invent a better wheel.
 
 * [MojoX::Auth::Simple](https://metacpan.org/pod/MojoX::Auth::Simple) - stores passwords in a database
-* [MojoX::Session](https://metacpan.org/pod/MojoX::Session)
+* [MojoX::Session](https://metacpan.org/pod/MojoX::Session) - stores sessions in a database
 * [Yancy::Plugin::Auth::Basic](https://metacpan.org/pod/Yancy::Plugin::Auth::Basic) - new CMS for Mojolicious
 * [Mojolicious::Plugin::OAuth2](https://metacpan.org/pod/Mojolicious::Plugin::OAuth2) - haven’t had time to look at it
 * [OAuth::Cmdline::Mojo](https://metacpan.org/pod/OAuth::Cmdline::Mojo) - not much documentation
