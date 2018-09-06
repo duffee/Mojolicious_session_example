@@ -1,11 +1,15 @@
 # Mojolicious session example
 A simple Mojolicious application example for authenticating a user and maintaining a session.
 
-_**A Work In Progress - Not Ready for Production Use**_  I am still soliciting comments.
+_**A Work In Progress - Almost Ready for Production Use**_  I am still soliciting comments.
 
 Quick link for the Impatient to [Getting Started](docs/Getting_Started.md) on the example.
 
-# London Perl Workshop 2017
+# ~~London Perl Workshop 2017~~ Mojoconf & Norwegian Perl Workshop 2018
+
+If I've had too much coffee and start talking too fast, here is the 
+[text of the Lightning Talk](docs/Lightning_Talk.md)
+
 If you've come here following the spamvertised links at the coffee break table,
 you'll find a tutorial in need of improvement, which _you can provide 
 [through your comments](docs/CONTRIBUTING.md)!_
