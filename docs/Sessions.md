@@ -103,12 +103,12 @@ Hopefully, I can steal some example code at
 
 # What's the difference between `session` and `signed_cookie`?
 
-In the [documentation](https://mojolicious.org/perldoc/Mojolicious/Controller#session)
+In the [documentation](https://mojolicious.org/perldoc/Mojolicious/Controller#session),
 it looks like the Controller methods `session` and `signed_cookie` are the same thing,
 so I asked [Marcus](https://github.com/marcusramberg) and he said
-> the `session` is a reference to the hash value which you can manipulate in Perl
-> the `signed_cookie` is the hash rendered as a string which is what gets sent across
-> to the browser
+> `session` is a reference to the hash value which you can manipulate with the controller.
+> `signed_cookie` is the session hash rendered as a string which is what gets sent across
+> to the browser.
 
 # Change the Secret Passphrase
 

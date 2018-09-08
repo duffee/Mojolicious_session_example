@@ -68,7 +68,8 @@ The render used in the successful login directs the output to a template
 ## templates/tutorial/login.html.ep
 fixed the form_for line to use the named route 'do_login'
 
-_TODO - what is a **named route** and why is it useful?_
+We don't need a **named route**, but it can help you stay flexible as your site evolves.
+I'll talk more about this in [Templates](Templates.md)
 
 ## templates/tutorial/welcome.html.ep
 Added a new template as a landing page for successful logins,

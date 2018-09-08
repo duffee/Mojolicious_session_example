@@ -76,6 +76,28 @@ _TODO - could use the css selectors in Test::Mojo_
 script/session_tutorial test 
 ```
 
+# Named routes
+
+Why do we want named routes?  We don't need them, but they decouple the logic from the url.
+_As far as I understand,_
+You name the route in the router
+in **lib/SessionTutorial.pm**
+```
+  $r->post('/login')->name('do_login')->to('Tutorial#on_user_login');
+```
+and now you can use it with the helper in your template
+in **templates/start.html.ep**
+```
+%= link_to Login => 'login'
+```
+_TODO - make the template **actually use** the named route_
+
+The helpers that are named route aware are `link_to`,
+_TODO - list of helpers that can use named routes_
+**ASK JOEL, AGAIN**
+So, if you decide the change the URL of the Login page from **/login** to **/letmein**,
+you won't have to change every template.  The helper tags will use the name, instead.
+
 
 # Next Step
 
