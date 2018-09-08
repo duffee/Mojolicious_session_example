@@ -42,22 +42,33 @@ _TODO - add link to hypnotoad and explain_
 # Try it out
 
 Authenticate at the [Login page](https://localhost:3000/login)
-and check `log/access.log` for something like 
+and check **log/access.log** for something like 
 ```
 [Thu Nov 16 18:59:16 2017] [info] Login FAILED: francisco	127.0.0.1
 [Thu Nov 16 19:01:34 2017] [info] Login succeeded: julian	127.0.0.1
 ```
+_TODO - Except that during testing I used the controller's log instead of the one
+I instantiated with the path, so also take a look at **log/development.log**_
 
 # Test the app
-
-_TODO - I can't think of how to write a test that intercepts log messages._
 
 In the test, you can change the log level using
 `$t->app->log->level('fatal');`
 
 ```
-script/session_tutorial test 
+prove -v -l t/04_logging.t
 ```
+Discussion on testing Mojo::Log 
+> You _should_ check the last 10 messages in the log with `$t->app->log->history`
+> but subscribing to the log using `on` as in
+> `$self->app->log->on(message => sub { my ($log, $level, @lines) = @_; say "$level: ", @lines; });`
+> is another possibility
+>
+> Don't instantiate the log yourself.
+> 
+> PROVE PROVE PROVE PROVE PROVE
+> use prove -v -l t/04_logging.t
+> and the history gets filled
 
 
 # Next Step

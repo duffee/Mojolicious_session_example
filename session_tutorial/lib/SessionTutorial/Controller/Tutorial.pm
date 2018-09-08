@@ -4,7 +4,7 @@ use Net::LDAP qw/LDAP_INVALID_CREDENTIALS/;
 use YAML qw/LoadFile/;
 use Mojo::Log;
 
-my $log = Mojo::Log->new(path => 'log/access.log', level => 'info');
+#my $log = Mojo::Log->new(path => 'log/access.log', level => 'info');
 my %Login_Attempts;
 my $MAX_LOGIN_ATTEMPTS = 3;
 my $DURATION_BLOCKED = 30 * 60;
@@ -125,11 +125,12 @@ sub record_login_attempt {
   my $ip_address = $self->tx->remote_address;
 
   if ($result eq 'SUCCESS') {
-    $log->info(join "\t", "Login succeeded: $user", $ip_address);
+    $self->app->log->info(join "\t", "Login succeeded: $user", $ip_address);
+
     $Login_Attempts{$ip_address}->{tries} = 0;	# reset the number of login attempts
   }
   else {
-    $log->info(join "\t", "Login FAILED: $user", $self->tx->remote_address);
+    $self->app->log->info(join "\t", "Login FAILED: $user", $self->tx->remote_address);
 
     $Login_Attempts{$ip_address}->{tries}++;
     if ( $Login_Attempts{$ip_address}->{tries} > $MAX_LOGIN_ATTEMPTS ) {

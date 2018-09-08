@@ -80,7 +80,7 @@ _Is that good enough?_
 
 I've gone for a simple hash just to illustrate the principle.
 Are you worried about memory consumption?
-How about `tie`ing the %Login_Attempts hash to a file stored on disk?
+How about `tie`ing the `%Login_Attempts` hash to a file stored on disk?
 Perhaps you want to store a lot more information about logins,
 say to ask the user if they recognize their last successful login?
 It might be better to use a database (Mysql, Redis, Sqlite) to store 

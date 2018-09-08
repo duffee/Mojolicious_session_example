@@ -10,6 +10,9 @@ sub startup {
 
   # Documentation browser under "/perldoc"
   $self->plugin('PODRenderer') if $config->{perldoc};
+#$self->app->log->on(message => sub { my ($log, $level, @lines) = @_; say "$level: ", @lines; });
+  #$self->plugin('Log');
+
 
   # Router
   my $r = $self->routes;
