@@ -10,9 +10,16 @@ sub startup {
 
   # Documentation browser under "/perldoc"
   $self->plugin('PODRenderer') if $config->{perldoc};
-#$self->app->log->on(message => sub { my ($log, $level, @lines) = @_; say "$level: ", @lines; });
-  #$self->plugin('Log');
 
+  # Let's look for an OAuth2 token
+  $self->plugin('OAuth2' => {
+    facebook => {
+	authorize_url => "https://graph.facebook.com/oauth/authorize",
+	token_url     => "https://graph.facebook.com/oauth/access_token",
+	key           => "APP_ID",
+	secret        => "SECRET_KEY",
+    },
+  } );
 
   # Router
   my $r = $self->routes;

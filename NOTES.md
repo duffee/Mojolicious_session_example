@@ -21,6 +21,7 @@ I'd like to thank the following for their comments and solutions.
 * TBSliver
 * Joel Berger
 * Marcus Ramberg
+* Jan Henning Thorsen
 * Dan H (mozilla)
 
 If there is ever a book that comes out of this, you can blame
