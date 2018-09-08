@@ -96,10 +96,9 @@ sub start {
 1;
 ```
 
-_TODO - this needs more explanation of how the **action** in the **Controller**
-is directed to the **template**.  Link to 
+_TODO - this needs more explanation of how the **action** in the **Controller** is directed to the **template**.  Link to_
 [Rendering](http://localhost:3000/perldoc/Mojolicious/Guides/Rendering)
-_
+
 
 ## templates/tutorial/start.html.ep
 
@@ -192,6 +191,29 @@ add `$t->get_ok('/login')->status_is(200)->content_like(qr/Username/i);`
 and run
 ```
 script/session_tutorial test t/basic.t
+```
+which should pass with this message
+```
+All tests successful.
+Files=1, Tests=6,  1 wallclock secs
+Result: PASS
+```
+But the important part is that the form is on the page and that it has
+all the elements that we want to pass through, as well as a Submit button.
+We can keep chaining tests together.  I've given each test its own line to make it readable.
+```
+$t->get_ok('/login')
+  ->status_is(200)
+  ->element_exists('form input[name="username"]')
+  ->element_exists('form input[name="password"]')
+  ->element_exists('form input[type="submit"]')
+  ->content_like(qr/Username/i);
+```
+now you should see that 9 tests pass when you run the test
+```
+All tests successful.
+Files=1, Tests=9,  1 wallclock secs
+Result: PASS
 ```
 Read more about 
 [testing Mojolicious applications](http://mojolicious.org/perldoc/Mojolicious/Guides/Testing)
