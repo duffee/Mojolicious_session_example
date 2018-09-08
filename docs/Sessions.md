@@ -60,6 +60,7 @@ if you send it to a different controller, in my case `Secure#protected`.
 In that case you need to check to see if you're logged in inside the `protected`
 method.
 
+_TODO - verify that Secure is now Tutorial and should be changed_
 
 # Try it out
 Start the server with
@@ -99,6 +100,15 @@ plugin session => {
 
 Hopefully, I can steal some example code at 
 [Mojoconf](http://oslo.pm/npw2018/)
+
+# What's the difference between `session` and `signed_cookie`?
+
+In the [documentation](https://mojolicious.org/perldoc/Mojolicious/Controller#session)
+it looks like the Controller methods `session` and `signed_cookie` are the same thing,
+so I asked [Marcus](https://github.com/marcusramberg) and he said
+> the `session` is a reference to the hash value which you can manipulate in Perl
+> the `signed_cookie` is the hash rendered as a string which is what gets sent across
+> to the browser
 
 # Change the Secret Passphrase
 
