@@ -58,6 +58,15 @@ to get to the [Login page](http://localhost:3000/login)
 script/session_tutorial test t/01_login.t
 ```
 
+## Testing config file
+Sometimes you want to test an application with a different set of variables.
+You can specify an alternate config file on the command line with the **MOJO_CONFIG**
+environment variable, with other variables listed in the 
+[wiki](https://github.com/mojolicious/mojo/wiki/%25ENV).
+sri says that he would use mode specific config files, like **my_app.testing.conf** and 
+start the app with `./my_app.pl daemon --mode testing`.
+
+
 # Next Step
 
 **This tutorial finishes here.**
