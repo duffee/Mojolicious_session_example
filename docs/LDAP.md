@@ -109,6 +109,14 @@ You'll need to have `Test::Net::LDAP::Mock` installed to run the test
 script/session_tutorial test 
 ```
 
+(stolen from Joel)
+
+When instantiating a Full app you can actually pass it a second argument, a hash reference of configuration overrides. This can be especially handy for overriding things like database parameters to access a test instance rather than your regular database.
+
+so
+```perl
+my $t = Test::Mojo->new('MyApp', {pg => 'postgresql://testuser:testpass@/testdb'});
+```
 
 # Next Step
 
