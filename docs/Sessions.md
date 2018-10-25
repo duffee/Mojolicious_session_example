@@ -11,7 +11,7 @@ We'll look at these 3 files
 
 ## lib/SessionTutorial/Controller/Tutorial.pm
 Add in these lines to the `on_user_login` method before rendering the page
-```
+```perl
     $self->session(logged_in => 1);             # set the logged_in flag
     $self->session(username => $username);      # keep a copy of the username
     $self->session(expiration => 600);          # expire this session in 10 minutes
@@ -29,7 +29,7 @@ is in the documentation.
 
 First you need to define a route in **lib/SessionTutorial.pm**
 like these two protected pages
-```
+```perl
   my $authorized = $r->under('/secure')->to('Tutorial#is_logged_in');
   $authorized->get('/protected')->to('Tutorial#protected');
   $authorized->get('/admin')->to(template => 'tutorial/admin');
@@ -40,7 +40,7 @@ Likewise, the url `http://localhost:3000/secure/protected` will be routed
 to the `protected` method of Secure.pm.
 
 Of course, you need a ```protected``` action in the ```Tutorial``` controller like
-```
+```perl
 sub protected {
   my $self = shift;
 
