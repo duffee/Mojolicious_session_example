@@ -162,7 +162,7 @@ and a new template `templates/tutorial/login.html.ep` with a skeleton form
 <h2><%= $msg %></h2>
 This is the login page for the first step of the Session Example.
 <p>
-%= form_for login => {format => 'txt'} => (method => 'POST') => begin
+%= form_for login => (method => 'POST') => begin
   %= text_field 'username'
   %= submit_button
 % end
@@ -170,7 +170,7 @@ This is the login page for the first step of the Session Example.
 That's a rubbish login page.  Add this to the form to add a password field
 and label everything just for the bare minimum.
 ```
-%= form_for login => {format => 'txt'} => (method => 'POST') => begin
+%= form_for login => (method => 'POST') => begin
   Username: 
   %= text_field 'username'
   <br>

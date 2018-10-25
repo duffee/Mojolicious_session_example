@@ -58,7 +58,7 @@ sub on_user_login {
 
     $self->stash(user => $username);
     $self->redirect_to($self->session('calling_page')) if $self->session('calling_page');
-    $self->render(template => 'tutorial/welcome', format => 'html');
+    $self->render(template => 'tutorial/welcome');
   } 
   else {
     record_login_attempt($self, 'FAILED');

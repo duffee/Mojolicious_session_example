@@ -27,7 +27,7 @@ sub on_user_login {
 
   if (check_credentials($username, $password)) {
     $self->stash(user => $username);
-    $self->render(template => 'tutorial/welcome', format => 'html');
+    $self->render(template => 'tutorial/welcome');
   } 
   else {
     $self->render(
@@ -63,7 +63,7 @@ The quickest way of making sure you've got the right behaviour is to render to t
 as in the failed login.  Remember to set the format to html if you want to include a link.
 ( _why is this not default_ )
 The render used in the successful login directs the output to a template
-(which is composed of controller/action _and for some reason defaulted to txt output_).
+(which is composed of controller/action).
 
 ## templates/tutorial/login.html.ep
 fixed the form_for line to use the named route 'do_login'
