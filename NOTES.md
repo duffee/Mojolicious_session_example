@@ -23,6 +23,7 @@ I'd like to thank the following for their comments and solutions.
 * Marcus Ramberg
 * Jan Henning Thorsen
 * Dan H (mozilla)
+* Michael Budde
 
 If there is ever a book that comes out of this, you can blame
 Brian d Foy for suggesting it

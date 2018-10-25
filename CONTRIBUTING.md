@@ -37,6 +37,11 @@ bringing the Snapshots and instructions into line.  In those cases, I'll
 plan to include the changes suggested to keep the tutorial sensible
 while the work goes on.  PRs that save me work will be readily accepted.
 
+Oh, and please be patient with me.  I'll see your request within the week,
+but might not find time to look at it for another five and I'm rubbish about
+commenting in a timely manner.  If you change your mind, leave a comment or
+else I'll still go through the closed PR.  Good intentions and all.
+
 ## Suggestions
 
 What is the next step making in the natural progession of the learning curve?

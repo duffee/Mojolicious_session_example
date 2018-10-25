@@ -16,7 +16,7 @@ the app, it knows where it looks.  No changes necessary here.
 
 Straight out of the box, it looks like this.
 Like any module, it starts with the package line.  
-```
+```perl
 package SessionTutorial;
 use Mojo::Base 'Mojolicious';
 
@@ -51,7 +51,7 @@ and looks for a sub in the controller file with the same name as the part follow
 eg. `start` runs the `start` action (or subroutine) in the controller file.
 
 It should now look like this
-```
+```perl
 package SessionTutorial;
 use Mojo::Base 'Mojolicious';
 
@@ -81,7 +81,7 @@ Rename `lib/SessionTutorial/Controller/Example.pm` to `lib/SessionTutorial/Contr
 change the package name on the first line, rename the **welcome** method to **start** 
 and change the message to end up like this
 
-```
+```perl
 package SessionTutorial::Controller::Tutorial;
 use Mojo::Base 'Mojolicious::Controller';
 
@@ -136,7 +136,7 @@ If `morbo` has been running since [Getting Started](Getting_Started.md),
 you'll notice that the changes you've made to the Controller were loaded
 as soon as you saved the updated file.  How's that for a time saver?
 
-## add a new route
+## Add a new route
 Let's add a Login page.  Start with putting in a link to it on the Start
 page `templates/tutorial/start.html.ep` at the bottom.
 ```

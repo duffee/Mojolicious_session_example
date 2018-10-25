@@ -18,7 +18,7 @@ $r->post('/login')->name('do_login')->to('Tutorial#on_user_login');
 
 ## lib/SessionTutorial/Controller/Tutorial.pm
 Add a new method called **on_user_login** to handle checking credentials
-```
+```perl
 sub on_user_login {
   my $self = shift;
 
@@ -50,12 +50,12 @@ sub check_credentials {
 ```
 
 The form on the Login page POSTs the username and password to /login,
-so we need a route that directs the request to the on_user_login method
+so we need a route that directs the request to the `on_user_login` method
 in the Tutorial controller.
 
 ( note that "return" isn't required, but good form for chaining methods **check this** )
 
-The check_credentials method separates the password check from the login action.
+The `check_credentials` method separates the password check from the login action.
 This allows us to change the authentication method in future 
 while maintaining the same login behaviour.
 
@@ -100,7 +100,7 @@ Make sure the Authentication works correctly
 
 I've renamed `basic.t` to `00_basic.t` and copied it to `01_login.t` to add the
 new tests.  It now looks like
-```
+```perl
 my $t = Test::Mojo->new('SessionTutorial');
 
 $t->get_ok('/login')->status_is(200)->content_like(qr/Username/i);
