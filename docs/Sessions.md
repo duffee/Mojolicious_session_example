@@ -39,7 +39,7 @@ template `secure/admin` you need the url `http://localhost:3000/secure/admin`.
 Likewise, the url `http://localhost:3000/secure/protected` will be routed
 to the `protected` method of Secure.pm.
 
-Of course, you need a ```protected``` action in the ```Tutorial``` controller like
+Of course, you need a `protected` action in the `Tutorial` controller like
 ```perl
 sub protected {
   my $self = shift;

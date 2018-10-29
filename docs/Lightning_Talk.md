@@ -74,7 +74,7 @@ or forget the tutorial and just write code
 * Provide a template **lib/App/Controller/Authenticate.pm** and tell people how to use it
 * Re-write **MojoX::Auth::Simple** to handle LDAP
     * Abstract out an **Auth.pm** base class to handle common methods for Simple, LDAP, OAuth2, etc
-* Auto-generate templates with ```mojo generate session_app``` _(yours to write)_
+* Auto-generate templates with `mojo generate session_app` _(yours to write)_
 
 Don't forget to document.
 

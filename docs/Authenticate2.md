@@ -96,6 +96,9 @@ You should then see the **Access Denied** page when you try to login again.
 
 #### TODO ####
 
+check out [secure_compare](https://metacpan.org/pod/Mojo::Util#secure_compare)
+I found it in the [Cookbook](https://mojolicious.org/perldoc/Mojolicious/Guides/Cookbook#Basic-authentication1)
+
 # Test the app
 
 ```
