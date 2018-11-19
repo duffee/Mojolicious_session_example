@@ -1,10 +1,17 @@
 # Authenticating with LDAP
 
 
-This is from a talk I gave at London Perl Workshop in 2018.
+This is from a
+[talk](https://act.yapc.eu/lpw2018/talk/7558)
+I gave at
+[London Perl Workshop](https://act.yapc.eu/lpw2018)
+in 2018.
 It's a little optimistic thinking that they'll get through
 editing all the videos before Christmas, but we could hope
 for an ephiphany.
+LDAP is just a small part of the authentication cycle here, so
+this post generalizes fairly well for those cases where you have
+to write your own credential checker.
 
 In the meantime, have a
 [Lightning Talk](https://www.youtube.com/watch?v=t-BEo467pUI)
@@ -86,7 +93,12 @@ could change the `check_credentials` to something better than this
 sub check_credentials {
   my ($username, $password) = @_;
 
-  my $sth = $dbh->prepare( "SELECT username FROM user_passwd WHERE username = ? AND password = ?" );
+  my $statement = <<'SQL';	# NO! NO! NO!
+SELECT username FROM user_passwd
+WHERE username = ? AND password = ?
+SQL
+
+  my $sth = $dbh->prepare($statement);
   $sth->execute($username, $password) or return;
   my @row = $sth->fetchrow_array();
   $sth->finish();
@@ -98,11 +110,37 @@ with the database connection and handle `$dbh` left as an exercise to the reader
 And yes, you should prepare the SQL outside of the sub.
 The `?` in the SQL statement are bind parameters, placeholders that make the database call faster and safer.
 
-_a plain old .htaccess file might be another way of quickly getting to a password file - didn't check_
+### Did you spot the HUGE mistake I made?
+
+Never, never, NEVER store passwords in plain text!  (Blame it on Friday afternoon)
+You should encrypt the password before storing it with an algorithm like AES or SHA-256.
+So, how about this for a better untested example
+
+encrypt with SQL
+```perl
+  my $statement = <<'SQL';      # better
+SELECT username FROM user_passwd
+WHERE username = ? AND password = SHA2(?, 256)
+SQL
+```
+
+or encrypt with Perl
+```perl
+use Crypt::Digest::SHA256 qw/ sha256 /;
+
+sub check_credentials {
+  my ($username, $password) = @_;
+  my $encrypted = sha256($password);
+
+...
+
+  $sth->execute($username, $encrypted) or return;
+```
+
 
 ## How to [LDAP](https://metacpan.org/pod/Net::LDAP)
 
-Authenticating with LDAP is a two step process.
+
 First you search LDAP for a user and then you
 [bind](https://metacpan.org/pod/Net::LDAP#METHODS)
 as the user with the password.
@@ -185,7 +223,7 @@ which I named *do_login*.  Using
 [named routes](https://mojolicious.io/blog/2017/12/03/day-3-using-named-routes/)
 gives you the flexibility of changing URLs without much hassle.
 
-# Joel
+# notes for Joel
 
 ## Author
 

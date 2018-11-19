@@ -1,3 +1,5 @@
+# NOT READY YET, JOEL
+
 # A pre-Christmas Diet for Mojolicious
 
 (image of a Christmas pudding with cream, maybe flaming)
