@@ -5,18 +5,15 @@ _**A Work In Progress - Almost Ready for Production Use**_  I am still solicitin
 
 Quick link for the Impatient to [Getting Started](docs/Getting_Started.md) on the example.
 
-# ~~London Perl Workshop 2017~~ Mojoconf & Norwegian Perl Workshop 2018
+# London Perl Workshop 2018
 
-If I've had too much coffee and start talking too fast, here is the 
-[text of the Lightning Talk](docs/Lightning_Talk.md)
-
-If you've come here following the spamvertised links at the coffee break table,
+If you've come here following the wonderful [short talk](http://act.yapc.eu/lpw2018/talk/7558),
 you'll find a tutorial in need of improvement, which _you can provide 
 [through your comments](docs/CONTRIBUTING.md)!_
 Either raise an [issue](https://github.com/duffee/Mojolicious_session_example/issues) 
-on Github or email me at **b.duffee at keele dot ac.uk**.
+on Github, send a Pull Request or email me at **b.duffee at keele dot ac.uk**.
 
-**I am not an expert.**
+**I am not the expert.**
 This tutorial is the result of learning to put together a website with authenticated access
 and having to try out a few ideas after reading the documentation.
 I use it as a sandbox meaning that it follows my train of thought, 
@@ -24,6 +21,10 @@ so it backtracks now and then as I learn something new (like Config files).
 You'll also see where I've run out of steam when TODOs start popping up in the text.
 The documentation seems more oriented towards getting users up and running quickly 
 with Mojolicious::Lite or for advanced developers.  I feel there's a gap in the middle.
+
+Here is the [text of the Lightning Talk](docs/Lightning_Talk.md)
+I gave at [Mojoconf & Norwegian Perl Workshop 2018](https://oslo.pm/npw2018/)
+which just advertises this tutorial.
 
 ### [How you can help](CONTRIBUTING.md)
 
