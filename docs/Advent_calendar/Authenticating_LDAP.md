@@ -93,7 +93,7 @@ could change the `check_credentials` to something better than this
 sub check_credentials {
   my ($username, $password) = @_;
 
-  my $statement = <<'SQL';	# NO! NO! NO!
+  my $statement = <<'SQL';	    NO! Don't do this!
 SELECT username FROM user_passwd
 WHERE username = ? AND password = ?
 SQL
@@ -167,7 +167,7 @@ sub check_credentials {
         or warn("Couldn't connect to LDAP server $LDAP_server: $@"), return;
 
   my $search = $ldap->search( base => $base_DN,
-                              filter => "$user_attr=$username",
+                              filter => join('=', $user_attr, $username),
                               attrs => [$user_id],
                             );
   my $user_id = $search->pop_entry();

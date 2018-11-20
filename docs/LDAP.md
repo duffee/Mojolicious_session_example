@@ -39,7 +39,7 @@ Replace the body of `check_credentials()` with the following
         or warn("Couldn't connect to LDAP server $LDAP_server: $@"), return;
 
   my $search = $ldap->search( base => $base_DN,
-                              filter => "$user_attr=$username",
+                              filter => join('=', $user_attr, $username),
                               attrs => [$user_id],
                             );
   my $user_id = $search->pop_entry();
