@@ -2,7 +2,7 @@
 
 
 This is from a
-[talk](https://act.yapc.eu/lpw2018/talk/7558)
+[talk](https://docs.google.com/presentation/d/14ZbARlTj_3mxEf_9Bvbrz0AUYjQdFjIXfYuttb_J7uU)
 I gave at
 [London Perl Workshop](https://act.yapc.eu/lpw2018)
 in 2018.
