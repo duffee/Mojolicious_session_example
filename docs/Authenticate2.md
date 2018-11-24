@@ -3,7 +3,7 @@
 You've got a login page to stop the great unwashed from getting into your website,
 but what about the Bad Person who tries to crack your passwords with a script?
 
-Standard proceedure is to `sleep` on failure which doesn't bother a human,
+Standard procedure is to `sleep` on failure which doesn't bother a human,
 but slows down a brute force attack.
 The second step is to block access after a number of failed attempts,
 usually for a timeout period so that a real person can eventually get back

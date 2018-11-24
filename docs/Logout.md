@@ -1,6 +1,6 @@
 # Logout
 
-This is a very short page to show you how to make sure you've logged out of your applicaton.
+This is a very short page to show you how to make sure you've logged out of your application.
 
 # `lib/SessionTutorial.pm`
 Just looking at one file this time.  Not bothering to put the code into a 

@@ -30,7 +30,7 @@ which just advertises this tutorial.
 
 Pointing out parts that are confusing would be a great help.
 I would welcome anything that identifies how a section could be clearer,
-explainations of best practice, where I've missed something or what it just plain **wrong**.
+explanations of best practice, where I've missed something or what it just plain **wrong**.
 I realize that some berks will blindly cut and paste these examples into their code 
 and I really _don't_ want the reputation of 
 [Matt's Script Archive](https://en.wikipedia.org/wiki/Matt%27s_Script_Archive). 
@@ -63,7 +63,7 @@ The first step is in [Getting_Started](docs/Getting_Started.md).
 
 ## How to use this tutorial
 
-You can read everthing on Github or clone this repository to your machine.
+You can read everything on Github or clone this repository to your machine.
 
 You can access the material in at least three ways:
 * Read the docs starting at [Getting_Started](docs/Getting_Started.md) and follow the instructions

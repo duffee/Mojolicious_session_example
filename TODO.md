@@ -40,7 +40,7 @@
 
 ## Logging
 
-* ~~add logging for who is logs in and failed authetication~~
+* ~~add logging for who is logs in and failed authentication~~
 
 # Issues
 
