@@ -38,6 +38,8 @@ Replace the body of `check_credentials()` with the following
   my $ldap = Net::LDAP->new( $LDAP_server )
         or warn("Couldn't connect to LDAP server $LDAP_server: $@"), return;
 
+  # Escape special chacarters in the username
+  $username =~ s/([*()\\\x{0}])/sprintf '\\%02x', ord($1)/ge;
   my $search = $ldap->search( base => $base_DN,
                               filter => join('=', $user_attr, $username),
                               attrs => [$user_id],
