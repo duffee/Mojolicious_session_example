@@ -55,7 +55,7 @@ The third line is just there so that the test passes and should be removed from 
 system, unless you want an alternate authentication method there.
 `Net::LDAP->new` makes a connection to an LDAP server and `search`, searches the `base_DN`
 for `username=$username` and returns the `id` attribute for the user, if one exists.
-`return` if you don't have an `id` (line 40) or non-existant people can login.
+`return` if you don't have an `id` (line 40) or non-existent people can login.
 Finally, bind to LDAP as the user with the password (line 43) and check the result.
 I imported the constant `LDAP_INVALID_CREDENTIALS` from Net::LDAP and checked 
 the return code of the bind.

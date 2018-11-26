@@ -44,7 +44,7 @@ else I'll still go through the closed PR.  Good intentions and all.
 
 ## Suggestions
 
-What is the next step making in the natural progession of the learning curve?
+What is the next step making in the natural progression of the learning curve?
 Are there good locations to drop in exercises for the reader, 
 using tests in conjunction with a skeleton along the lines of the 
 [First Times Only](https://blog.kentcdodds.com/first-timers-only-78281ea47455)

@@ -92,7 +92,7 @@ script/session_tutorial test
 
 ## Documentation
 
-Mojolicious ships with all its documention available through the browser
+Mojolicious ships with all its documentation available through the browser
 when morbo is running.  
 Use 
 [localhost:3000/perldoc](http://localhost:3000/perldoc "Mojolicious Guides") 
