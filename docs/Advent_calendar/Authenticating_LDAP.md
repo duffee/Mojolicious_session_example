@@ -1,7 +1,12 @@
 # Authenticating with LDAP
 
+There are still quite a few people using LDAP in production,
+but for those who are new to it,
+LDAP is a directory with a tree-structure that's optimized for very fast lookups.
+It used to be very common as a centralized authentication system
+and if you're using Active Directory, you're using LDAP (mostly).
 
-This is from a
+This post is based on a
 [talk](https://docs.google.com/presentation/d/14ZbARlTj_3mxEf_9Bvbrz0AUYjQdFjIXfYuttb_J7uU)
 I gave at
 [London Perl Workshop](https://act.yapc.eu/lpw2018)
@@ -110,10 +115,10 @@ with the database connection and handle `$dbh` left as an exercise to the reader
 And yes, you should prepare the SQL outside of the sub.
 The `?` in the SQL statement are bind parameters, placeholders that make the database call faster and safer.
 
-### Did you spot the HUGE mistake I made?
+#### Did you spot the HUGE mistake I made?
 
 Never, never, NEVER store passwords in plain text!  (Blame it on Friday afternoon)
-You should encrypt the password before storing it with an algorithm like AES or SHA-256.
+You should encrypt the password before storing it with an algorithm like AES or SHA-2.
 So, how about this for a better untested example
 
 encrypt with SQL
@@ -137,14 +142,85 @@ sub check_credentials {
   $sth->execute($username, $encrypted) or return;
 ```
 
+Technically, AES is an encryption algorithm and SHA-2 is a hashing algorithm,
+meaning that the transformation is effectively one-way and is more secure.
+Here are a couple of modules that make it easier:
+
+A nice module out there for handling passwords is, well,
+[Passwords](https://metacpan.org/pod/Passwords).
+It's just a wrapper around some other modules that gives you a simple API
+and will use [Bcrypt](https://metacpan.org/pod/Crypt::Eksblowfish::Bcrypt) by default.
+So if you've hashed your password with the `password_hash` function
+and stored the `$hash` value in your database like this
+```perl
+`my $hash = password_hash($initial_password);`
+
+my $sth = $dbh->prepare('INSERT INTO user_passwd (username, password) VALUES (?, ?)');
+$sth->do($username, $hash);
+```
+you should be ok to change the sub to
+```perl
+sub check_credentials {
+  my ($username, $password) = @_;
+
+  my $statement = 'SELECT password FROM user_passwd WHERE username = ?';
+
+  my $sth = $dbh->prepare($statement);
+  $sth->execute($username) or return;
+  my ($encoded) = $sth->fetchrow_array();
+  $sth->finish();
+  
+  return password_verify($password, $encoded);
+}
+```
+
+
+[Mojolicious::Plugin::Scrypt](https://metacpan.org/pod/Mojolicious::Plugin::Scrypt)
+will use the Scrypt algorithm,
+but can also use Argon2 (which was recommended to me at LPW), Bcrypt and more.
+So, assuming that you've stored your password with
+`my $encoded = $app->scrypt($password);`
+the `on_user_login` sub becomes
+```perl
+sub check_credentials {
+  my ($username, $password) = @_;
+
+  my $statement = 'SELECT password FROM user_passwd WHERE username = ?';
+
+  my $sth = $dbh->prepare($statement);
+  $sth->execute($username) or return;
+  my ($encoded) = $sth->fetchrow_array();
+  $sth->finish();
+  
+  # Ooops!  This is a bare sub and I'm trying to use the App object!
+  # FIX THIS!
+  return $self->scrypt_verify($password, $encoded);
+}
+```
+
+Further reading on storing passwords:
+* [Secure Salted Password Hashing](https://crackstation.net/hashing-security.htm#properhashing)
 
 ## How to [LDAP](https://metacpan.org/pod/Net::LDAP)
 
+These are the steps to authenticating:
+* Connect to the LDAP server
+* **Bind** to the server
+* Search for the user's unique identifier in LDAP
+* **Bind** as the user with their password
+* Check the result from the server
+First, you need to make a network connection to the LDAP server.
+Next, you [bind](https://metacpan.org/pod/Net::LDAP#METHODS) to the server.
+"Bind" is the term used in LDAP for connecting to a particular location
+in the LDAP tree.
+The LDAP server has a setting on whether it allows binding anonymously
+and determines whether you can search directory without a password
+as I've done in the example.
+Then you search LDAP for the user (because the identifiers are _loooong_)
+and then you bind as the user with the password they've provided.
+Finally you check if result that you get from the LDAP server is valid.
 
-First you search LDAP for a user and then you
-[bind](https://metacpan.org/pod/Net::LDAP#METHODS)
-as the user with the password.
-
+Here's the code
 ```perl
 package MyApp::Controller::Secure;
 use Mojo::Base 'Mojolicious::Controller';
@@ -165,6 +241,7 @@ sub check_credentials {
 
   my $ldap = Net::LDAP->new( $LDAP_server )
         or warn("Couldn't connect to LDAP server $LDAP_server: $@"), return;
+  my $message = $ldap->bind( $base_DN );
 
   my $search = $ldap->search( base => $base_DN,
                               filter => join('=', $user_attr, $username),
@@ -190,6 +267,23 @@ username: 	userid
 id: 		dn
 ```
 where the values on the right match the attributes in your LDAP schema.
+
+Just making the logic clear in the last step, I've imported a constant
+from Net::LDAP called `LDAP_INVALID_CREDENTIALS` and I use that to check
+against the result from the server.
+```perl
+use Net::LDAP qw/LDAP_INVALID_CREDENTIALS/;
+
+...
+
+  return ($login->code == LDAP_INVALID_CREDENTIALS) ? 0 : 1;
+}
+```
+The logic is a little back to front with the ternery operator, but
+if the code I get from the server is `LDAP_INVALID_CREDENTIALS`
+then I return `0`, a fail, otherwise I return `1`,
+which is a true value for the `if` in the body of the `on_user_login`
+function.
 
 Yes, you're right once again.  I probably should be using
 [Mojolicious::Plugin::Config](https://metacpan.org/pod/Mojolicious::Plugin::Config)
