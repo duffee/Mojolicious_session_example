@@ -2,8 +2,8 @@
 
 There are still quite a few people using LDAP in production,
 but for those who are new to it,
-LDAP is a directory with a tree-structure that's optimized for very fast lookups.
-It used to be very common as a centralized authentication system
+LDAP is a directory with a tree-structure that's optimised for very fast lookups.
+It used to be very common as a centralised authentication system
 and if you're using Active Directory, you're using LDAP (mostly).
 
 This post is based on a
@@ -13,9 +13,9 @@ I gave at
 in 2018.
 It's a little optimistic thinking that they'll get through
 editing all the videos before Christmas, but we could hope
-for an ephiphany.
+for an epiphany.
 LDAP is just a small part of the authentication cycle here, so
-this post generalizes fairly well for those cases where you have
+this post generalises fairly well for those cases where you have
 to write your own credential checker.
 
 In the meantime, have a
@@ -83,7 +83,7 @@ sub check_credentials {
 
 ## Storing passwords - MojoX::Auth::Simple
 
-We can agree that hardcoding usernames and passwords is not sustainable.
+We can agree that hard-coding usernames and passwords is not sustainable.
 If you can connect to a database, any database that your Perl
 [DBI](https://metacpan.org/pod/DBI) module can connect to,
 then you might think that
@@ -153,7 +153,7 @@ and will use [Bcrypt](https://metacpan.org/pod/Crypt::Eksblowfish::Bcrypt) by de
 So if you've hashed your password with the `password_hash` function
 and stored the `$hash` value in your database like this
 ```perl
-`my $hash = password_hash($initial_password);`
+my $hash = password_hash($initial_password);
 
 my $sth = $dbh->prepare('INSERT INTO user_passwd (username, password) VALUES (?, ?)');
 $sth->do($username, $hash);
@@ -199,16 +199,17 @@ sub check_credentials {
 ```
 
 Further reading on storing passwords:
-* [Secure Salted Password Hashing](https://crackstation.net/hashing-security.htm#properhashing)
+* [Secure Salted Password Hashing](https://crackstation.net/hashing-security.htm#properhashing) by Defuse Security.
 
 ## How to [LDAP](https://metacpan.org/pod/Net::LDAP)
 
 These are the steps to authenticating:
-* Connect to the LDAP server
-* **Bind** to the server
-* Search for the user's unique identifier in LDAP
-* **Bind** as the user with their password
-* Check the result from the server
+1. Connect to the LDAP server
+2. **Bind** to the server
+3. Search for the user's unique identifier in LDAP
+4. **Bind** as the user with their password
+5. Check the result from the server
+
 First, you need to make a network connection to the LDAP server.
 Next, you [bind](https://metacpan.org/pod/Net::LDAP#METHODS) to the server.
 "Bind" is the term used in LDAP for connecting to a particular location
@@ -253,12 +254,12 @@ sub check_credentials {
   # this is where we check the password
   my $login = $ldap->bind( $user_id, password => $password );
 
-  # return 1 on success, 0 on failure with the trinary operator
+  # return 1 on success, 0 on failure with the ternary operator
   return $login->code == LDAP_INVALID_CREDENTIALS ? 0
                                                   : 1;
 }
 ```
-where you have a file `ldap_config.yml` in the toplevel directory that looks a little like
+where you have a file `ldap_config.yml` in the top-level directory that looks a little like
 ```yaml
 # config values for connecting to LDAP
 server: 	ldap.example.com
@@ -279,7 +280,7 @@ use Net::LDAP qw/LDAP_INVALID_CREDENTIALS/;
   return ($login->code == LDAP_INVALID_CREDENTIALS) ? 0 : 1;
 }
 ```
-The logic is a little back to front with the ternery operator, but
+The logic is a little back to front with the ternary operator, but
 if the code I get from the server is `LDAP_INVALID_CREDENTIALS`
 then I return `0`, a fail, otherwise I return `1`,
 which is a true value for the `if` in the body of the `on_user_login`
