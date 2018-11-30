@@ -1,10 +1,31 @@
-# Authenticating with LDAP
+---
+title: Authenticating with LDAP
+disable_content_template: 1
+tags:
+    - advent
+    - LDAP
+    - authentication
+author: Boyd Duffee
+images:
+  banner:
+    src: 'banner.jpg'
+    alt: 'Who goes there?'
+    data:
+      attribution: |-
+        <a href="https://www.flickr.com/photos/maxlfly/1834725880/">Image</a> by <a href="https://www.flickr.com/people/85105517@N00">Alex Grech</a> <a href="https://creativecommons.org/licenses/by/2.0" title="Creative Commons Attribution 2.0">CC BY 2.0</a>
+data:
+  bio: duffee
+  description: 'Learn how to add LDAP authentication to a Mojolicious full app'
+---
 
 There are still quite a few people using LDAP in production,
 but for those who are new to it,
 LDAP is a directory with a tree-structure that's optimised for very fast lookups.
 It used to be very common as a centralised authentication system
 and if you're using Active Directory, you're using LDAP (mostly).
+I wander through the wilderness of authentication,
+ending with my solution on how to add LDAP authentication to your App.
+---
 
 This post is based on a
 [talk](https://docs.google.com/presentation/d/14ZbARlTj_3mxEf_9Bvbrz0AUYjQdFjIXfYuttb_J7uU)
@@ -354,24 +375,9 @@ which I named *do_login*.  Using
 [named routes](https://mojolicious.io/blog/2017/12/03/day-3-using-named-routes/)
 gives you the flexibility of changing URLs without much hassle.
 
-# notes for Joel
+## where next?
 
-## Author
-
-Boyd Duffee has been hanging around the edges of the Perl ecosystem for many moons,
-picking up new bits of shiny to make SysAdmining more interesting.
-He's pestered Joel (and a number of other Mojo devs) enough to feel guilted into 
-writing an Advent calendar entry.
-He's interested in Data Science, Complex Networks and walks in the woods.
-
-## suggested images for the calendar Window
-
-* [eyes](https://commons.wikimedia.org/wiki/File:Eyes_of_a_child_in_the_letter_hole.jpg)
-* [keyhole](https://pixabay.com/en/keyhole-old-lock-door-464232/)
-* [blue door](https://unsplash.com/photos/_AMz6-Z8GUI)
-* [teal door](https://unsplash.com/photos/XtMICJ6MMJk)
-* [spy hole](https://en.wikipedia.org/wiki/File:What%27s_the_password.JPG)
-* [camera](https://unsplash.com/photos/IhcSHrZXFs4)
-* [more doors](https://unsplash.com/search/photos/door), [more locks](https://unsplash.com/search/photos/lock), [more security](https://unsplash.com/search/photos/security)
-
-remove this bit when you publish.
+I go through the whole process of authenticating and maintaining sessions at my
+[Mojolicious session tutorial](https://github.com/duffee/Mojolicious_session_example)
+which will be getting some updates in the New Year to reflect what I've learned.
+Contributions welcome!
