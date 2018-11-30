@@ -17,6 +17,12 @@ for an epiphany.
 LDAP is just a small part of the authentication cycle here, so
 this post generalises fairly well for those cases where you have
 to write your own credential checker.
+Oh, and the talk and writing this post has done exactly what was intended
+and raised issues that I hadn't considered which I've included here.
+As a result, it's starting to read like
+[Alice's Restaurant](https://en.wikipedia.org/wiki/Alice%27s_Restaurant_Massacree)
+without the full orchestration and five part harmony.
+I hope this cautionary tale helps you to avoid the same pitfalls that I fell into.
 
 In the meantime, have a
 [Lightning Talk](https://www.youtube.com/watch?v=t-BEo467pUI)
@@ -192,23 +198,48 @@ sub check_credentials {
   my ($encoded) = $sth->fetchrow_array();
   $sth->finish();
   
-  # Ooops!  This is a bare sub and I'm trying to use the App object!
-  # FIX THIS!
+  # WAIT! where did $self come from
   return $self->scrypt_verify($password, $encoded);
 }
 ```
+Oh, dear.  The above crashes because of a design decision made early on in the writing process.
+I invoked `check_credentials` as a plain sub, not the method of an object.
+Using a Plugin depends on having the controller available, so the following changes are necessary.
+```perl
+sub on_user_login {
+  my $self = shift;
+...
+
+  if ($self->check_credentials($username, $password)) {
+...
+}
+
+sub check_credentials {
+  my ($self, $username, $password) = @_;
+...
+  return $self->scrypt_verify($password, $encoded);
+}
+```
+Y'know, I'm sitting here on the Group W bench thinkin' ...
+if I'm going to re-write this whole tutorial, maybe I should've started with
+[Mojolicious::Plugin::Authentication](https://metacpan.org/pod/Mojolicious::Plugin::Authentication)
+and taken you through the code you needed for the `validate_user` option in the Plugin.
+But let's leave that for next year.
+
 
 Further reading on storing passwords:
 * [Secure Salted Password Hashing](https://crackstation.net/hashing-security.htm#properhashing) by Defuse Security.
 
 ## How to [LDAP](https://metacpan.org/pod/Net::LDAP)
 
+_remember LDAP?  ... this is a post about LDAP_
+
 These are the steps to authenticating:
 1. Connect to the LDAP server
 2. **Bind** to the server
 3. Search for the user's unique identifier in LDAP
 4. **Bind** as the user with their password
-5. Check the result from the server
+5. Check the result code from the server
 
 First, you need to make a network connection to the LDAP server.
 Next, you [bind](https://metacpan.org/pod/Net::LDAP#METHODS) to the server.
@@ -219,7 +250,12 @@ and determines whether you can search directory without a password
 as I've done in the example.
 Then you search LDAP for the user (because the identifiers are _loooong_)
 and then you bind as the user with the password they've provided.
-Finally you check if result that you get from the LDAP server is valid.
+If this connection as the user with their password succeeds,
+then you must have used the correct password.
+LDAP hands you back a result from the `bind` as a
+[Net::LDAP::Message](https://metacpan.org/pod/distribution/perl-ldap/lib/Net/LDAP/Message.pod)
+object on either success or failure,
+so check the Message `code` to find out whether you should authenticate the user.
 
 Here's the code
 ```perl
@@ -323,7 +359,7 @@ gives you the flexibility of changing URLs without much hassle.
 ## Author
 
 Boyd Duffee has been hanging around the edges of the Perl ecosystem for many moons,
-picking up new bits of shiny to make work more interesting.
+picking up new bits of shiny to make SysAdmining more interesting.
 He's pestered Joel (and a number of other Mojo devs) enough to feel guilted into 
 writing an Advent calendar entry.
 He's interested in Data Science, Complex Networks and walks in the woods.

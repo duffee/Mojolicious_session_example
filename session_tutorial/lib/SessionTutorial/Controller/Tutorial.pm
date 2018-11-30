@@ -79,6 +79,7 @@ sub check_credentials {
 
   my $ldap = Net::LDAP->new( $LDAP_server )
         or warn("Couldn't connect to LDAP server $LDAP_server: $@"), return;
+  my $message = $ldap->bind( $base_DN );
 
   my $search = $ldap->search( base => $base_DN,
                               filter => "$user_attr=$username",
@@ -90,7 +91,7 @@ sub check_credentials {
   # this is where we check the password
   my $login = $ldap->bind( $user_id, password => $password );
 
-  # return 1 on success, 0 on failure with the trinary operator
+  # return 1 on success, 0 on failure with the ternary operator
   return $login->code == LDAP_INVALID_CREDENTIALS ? 0
                                                   : 1;
 }
