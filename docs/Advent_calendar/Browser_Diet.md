@@ -7,34 +7,75 @@
 You've just read
 [How to lose Weight in the Browser](https://browserdiet.com)
 and you want to know to slim down your Mojo app.
+Part of that process is preventing the browser from requesting files
+that hardly change.
+I spent a well-caffienated afternoon trying to do that with
+Mojolicious.
+I've been 'round the houses, and _spoiler alert_ I didn't find 
+the answer until the end, kind of like your favourite Christmas
+animated special with a small woodland creature narrating
+"The Gruffalo's HTTP header".
 
-## Hypnotoad
+---
 
-No, it's not in here.  It can set the HTTP headers to turn it into a
-[reverse proxy](https://mojolicious.org/perldoc/Mojolicious/Guides/Cookbook#Hypnotoad)
-, but a popular setup is sitting Hypnotoad behind Nginx or Apache/mod_proxy.
+The small woodland creature needed to display a web calendar with events pulled from a database.
+Perl can get the event data and package it as a JSON feed,
+with Mojolicous to prepare the webpages with the correct JSON feed for each user
+and some javascript libraries to display the web calendar,
+all would be well in the forest.
+Everything except the javascript libraries are lightweight.
+A page reload goes so much faster if it doesn't have to download the
+javascript every time.  Those libraries won't change for months!
+If only the client browser knew that it could use the file that it had downloaded
+last time.
+
+The secret, of course, is to set the `Cache-Control` field of the HTTP header, but _how_?
+
+## First, there was a [Horse](https://httpd.apache.org/) ...
+
+Everybody using Apache would be thinking about using
+[mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html)
+which looks quite easy, except I'm not using Apache to serve my pages.
+
+... but the Horse mentioned where there were some sweet
+[Cache-Control directives](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)
+to munch on and while continuing to graze on some
+[HTTP Caching](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching)
+pages that had been downloaded earlier.  I moved on.
+
+## and _then_ there was a [Toad](https://perlmaven.com/deploying-a-mojolicious-application)
+
+I use the [Hypnotoad](https://github.com/mojolicious/mojo/wiki/Hypnotoad-prefork-web-server)
+web server that comes with Mojolicious to serve my pages.
+I find it a good fit for my production environment.
+
+It can set the HTTP headers to turn it into a
+[reverse proxy](https://mojolicious.org/perldoc/Mojolicious/Guides/Cookbook#Hypnotoad),
+but a popular setup is sitting Hypnotoad behind Nginx or Apache/mod_proxy.
 Those servers should let you play with the ```Expires``` header.
+But the Toad didn't _quite_ have what I was looking for.
 
 No, I didn't mention
 [Plack](https://metacpan.org/pod/Plack).
-Maybe if I'm good this year, Santa will tell me how I should be using it.
-Probably something to do with
-```
+Maybe if I'm good this year, Santa will
+[tell me how](http://blogs.perl.org/users/aristotle/2018/11/modern-perl-cgi.html)
+I should be using it.  Probably something to do with
+```perl
 Plack::Response->header('Expires' => 'Tue, 25 Dec 2018 07:28:00 GMT');
 ```
 but I wouldn't know.
 
-## Mojo::Headers
+## and _then_ there was a Unicorn ... Mojo::Headers
 
-Well, that was easy.  Just use
+Well, that was easy.  Just use the standard
 [Mojo::Headers](https://mojolicious.org/perldoc/Mojo/Headers#expires)
-to set the ```Expires``` header.
+module to set the ```Expires``` header.
 
 But, wait!  That sets it for the page which isn't fat at all.
 You only want to stop the javascript files from reloading every single time
 and killing your mobile audience.
 
-## ```defer``` and ```async```
+##  and _then_ there was a Rhino ... ```defer``` and ```async```
 
 tell your script to load after the main page
 with
@@ -43,7 +84,9 @@ with
 TODO check syntax
 ```
 
-## but it needs to load **FIRST**!
+## ... and finally, there was a Man in a Hat
+
+But the javascript needs to load **FIRST**!
 
 Sigh - you _really_ want the world on a plate.
 
