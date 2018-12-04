@@ -130,7 +130,7 @@ The magpies in the forest had cluttered the calendar with 3 JavaScript libraries
 and the whole collection was a paltry 164 kB, but bandwidth is precious in the wilderness.
 Before using the StaticCache plugin, the calendar rated a
 **92** on Google's PageSpeed Insights.
-<img style="float: right;" src="speedtest_before_StaticCache.png">
+<img style="float: right;vertical-align: top;" src="speedtest_before_StaticCache.png">
 
 With the StaticCache plugin loaded
 ```perl
@@ -140,7 +140,7 @@ sub startup {
     $self->plugin('StaticCache' => { even_in_dev => 1 });
     ...
 ```
-<img style="float: left;" src="speedtest_with_StaticCache.png">
+<img style="float: left;vertical-align: top;" src="speedtest_with_StaticCache.png">
 page speeds are now **93 !!!!**
 WOW!  It's [one faster!](https://xkcd.com/670/), said Nutgel Tufty-tail 
 and everyone in the forest cheered.
