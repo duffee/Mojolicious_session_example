@@ -12,7 +12,7 @@ that hardly change.
 I spent a well-caffeinated afternoon trying to do that with
 Mojolicious.
 I've been 'round the houses, and _spoiler alert_ I didn't find 
-the answer until the end, kind of like your favourite Christmas
+the answer until the very end, kind of like your favourite Christmas
 animated special with a small woodland creature narrating
 "The Gruffalo's HTTP header".
 
@@ -25,7 +25,7 @@ Mojolicious could prepare the webpages with the correct JSON feed for each user.
 With some JavaScript libraries to display the web calendar,
 all would be well in the forest.
 
-<img style="float: right;" src="squirrel.jpg">
+<a href="https://www.flickr.com/photos/55426027@N03/16915881989"><img style="float: right;" src="squirrel.jpg"></a> by <a href="https://www.flickr.com/photos/55426027@N03">Peter G Trimming</a> is licensed under <a href="https://creativecommons.org/licenses/by/2.0"> CC BY 2.0 </a>
 
 Everything except the JavaScript libraries are lightweight.
 And everyone knows a page reload goes _so_ much faster if it doesn't have to download the
@@ -47,7 +47,7 @@ to munch on and while continuing to graze on some
 [HTTP Caching](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching)
 pages that had been downloaded earlier.  The small creature moves on.
 
-## and _then_ there was a [Toad](https://perlmaven.com/deploying-a-mojolicious-application)
+## ... and _then_ there was a [Toad](https://perlmaven.com/deploying-a-mojolicious-application)
 
 The forest creatures used the
 [Hypnotoad](https://github.com/mojolicious/mojo/wiki/Hypnotoad-prefork-web-server)
@@ -58,9 +58,9 @@ It can set the HTTP headers to turn it into a
 [reverse proxy](https://mojolicious.org/perldoc/Mojolicious/Guides/Cookbook#Hypnotoad),
 but a popular setup is sitting Hypnotoad behind Nginx or Apache/mod_proxy.
 Those servers should let you play with the ```Expires``` header.
-But the Toad didn't _quite_ have what the rodent was looking for.
+But the Toad didn't _quite_ have what this particular rodent was looking for.
 
-No, I didn't mention
+_An aside_ - No, I didn't mention
 [Plack](https://metacpan.org/pod/Plack).
 Maybe if I'm good this year, Santa will
 [tell me how](http://blogs.perl.org/users/aristotle/2018/11/modern-perl-cgi.html)
@@ -70,7 +70,7 @@ Plack::Response->header('Expires' => 'Tue, 25 Dec 2018 07:28:00 GMT');
 ```
 but I wouldn't know and neither did our narrator.
 
-## and _then_ there was a Unicorn
+## ... and _then_ there was a Unicorn
 
 Well, that was easy.  Just use the standard
 [Mojo::Headers](https://mojolicious.org/perldoc/Mojo/Headers#expires)
@@ -80,7 +80,7 @@ But, wait!  That sets it for a page which isn't fat at all.
 Our furry friend only wants to stop JavaScript files from reloading every single time
 which were killing the Sciuridae mobile experience.  Hmmmm.
 
-##  and _then_ there was a Rhino
+## ...  and _then_ there was a Rhino
 
 If the JavaScript lives in the `<head>` tag, then the page body won't be parsed
 until the script is downloaded.  Some people get around this by putting the script just
@@ -127,17 +127,19 @@ The magpies in the forest had cluttered the calendar with 3 JavaScript libraries
 3 CSS files and 4 logos.  Sure, the biggest and shiniest was only 66 kB
 and the whole collection was a paltry 164 kB, but bandwidth is precious in the wilderness.
 Before using the StaticCache plugin, the calendar rated a
-<img style="float: right;" src="speedtest_before_StaticCache.png">
 **92** on Google's PageSpeed Insights.
+<img style="float: right;" src="speedtest_before_StaticCache.png">
+
 With the StaticCache plugin loaded
 ```perl
 sub startup {
     my $self = shift;
 
     $self->plugin('StaticCache' => { even_in_dev => 1 });
+    ...
 ```
-page speeds are now **93 !!!!**
 <img style="float: left;" src="speedtest_with_StaticCache.png">
+page speeds are now **93 !!!!**
 WOW!  It's [one faster!](https://xkcd.com/670/), said Nutgel Tufty-tail 
 and everyone in the forest cheered.
 
