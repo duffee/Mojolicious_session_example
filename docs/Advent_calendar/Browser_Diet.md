@@ -25,8 +25,6 @@ Mojolicious could prepare the webpages with the correct JSON feed for each user.
 With some JavaScript libraries to display the web calendar,
 all would be well in the forest.
 
-<a href="https://www.flickr.com/photos/55426027@N03/16915881989"><img style="float: right;" src="squirrel.jpg"></a> by <a href="https://www.flickr.com/photos/55426027@N03">Peter G Trimming</a> is licensed under <a href="https://creativecommons.org/licenses/by/2.0"> CC BY 2.0 </a>
-
 Everything except the JavaScript libraries are lightweight.
 And everyone knows a page reload goes _so_ much faster if it doesn't have to download the
 JavaScript every time.  Those libraries won't change for months!
@@ -34,6 +32,10 @@ If only the client browser knew that it could use the file that it had downloade
 last time.
 
 The secret, of course, is to set the `Cache-Control` field of the HTTP header, but _how_?
+
+<a href="https://www.flickr.com/photos/55426027@N03/16915881989"><img style="float: right;" src="squirrel.jpg"></a>
+Image by <a href="https://www.flickr.com/photos/55426027@N03">Peter G Trimming</a>
+is licensed under <a href="https://creativecommons.org/licenses/by/2.0"> CC BY 2.0 </a>
 
 ## First, there was a [Horse](https://httpd.apache.org/) ...
 
