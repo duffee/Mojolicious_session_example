@@ -123,7 +123,23 @@ they should only be downloaded once and use the cached version until it expires.
 The default **max-age** is 30 days and 
 if you want you can even cache during development with ```even_in_dev => 1```.
 
-**Here is where I describe how _I_ got on with the StaticCache and whether this story has a happy ending**
+The magpies in the forest had cluttered the calendar with 3 JavaScript libraries,
+3 CSS files and 4 logos.  Sure, the biggest and shiniest was only 66 kB
+and the whole collection was a paltry 164 kB, but bandwidth is precious in the wilderness.
+Before using the StaticCache plugin, the calendar rated a
+<img style="float: right;" src="speedtest_before_StaticCache.png">
+**92** on Google's PageSpeed Insights.
+With the StaticCache plugin loaded
+```perl
+sub startup {
+    my $self = shift;
+
+    $self->plugin('StaticCache' => { even_in_dev => 1 });
+```
+page speeds are now **93 !!!!**
+<img style="float: left;" src="speedtest_with_StaticCache.png">
+WOW!  It's [one faster!](https://xkcd.com/670/), said Nutgel Tufty-tail 
+and everyone in the forest cheered.
 
 And _that_, dear readers, is how the squirrel learned to store nuts for the winter
 ... in a _cache_.  Good night, little kids, good niiiight.
