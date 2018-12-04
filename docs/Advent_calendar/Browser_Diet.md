@@ -1,8 +1,8 @@
-# NOT READY YET, JOEL
-
 # A pre-Christmas Diet for Mojolicious
 
-(image of a Christmas pudding with cream, maybe flaming)
+<a href="https://www.flickr.com/photos/wordridden/5799690654">Christmas pudding with brandy cream</a>
+by <a href="https://www.flickr.com/people/wordridden/">Jessica Spengler</a>
+is licensed under <a href="https://creativecommons.org/licenses/by/2.0"> CC BY 2.0 </a>
 
 You've just read
 [How to lose Weight in the Browser](https://browserdiet.com)
@@ -141,8 +141,8 @@ sub startup {
     ...
 ```
 <img style="float: left;vertical-align: top;" src="speedtest_with_StaticCache.png">
-page speeds are now **93 !!!!**
-WOW!  It's [one faster!](https://xkcd.com/670/), said Nutgel Tufty-tail 
+page speeds are now **93** **!!!!**
+WOW!  It's [one faster](https://xkcd.com/670)!, said Nutgel Tufty-tail 
 and everyone in the forest cheered.
 
 And _that_, dear readers, is how the squirrel learned to store nuts for the winter
