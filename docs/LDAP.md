@@ -53,6 +53,8 @@ The first thing I do is make sure there's a `$username`.  An empty return is goo
 indicating a failed login.
 The third line is just there so that the test passes and should be removed from a production
 system, unless you want an alternate authentication method there.
+Following the
+[best practices for LDAP authentication](https://ltb-project.org/documentation/general/auth_ldap_best_practices),
 `Net::LDAP->new` makes a connection to an LDAP server and `search`, searches the `base_DN`
 for `username=$username` and returns the `id` attribute for the user, if one exists.
 `return` if you don't have an `id` (line 40) or non-existent people can login.
