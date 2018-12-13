@@ -55,7 +55,7 @@ The forest creatures used the
 [Hypnotoad](https://github.com/mojolicious/mojo/wiki/Hypnotoad-prefork-web-server)
 web server that comes with Mojolicious to serve their pages.
 They found it a good fit for their arboreal production environment.
-![Hypnotoad image](https://www.mind-it.info/wp-content/uploads/2014/09/Hypnotoad.gif "All glory to the Hypnotoad")
+<img style="float: right;vertical-align: top;" src="Hypnotoad.gif" title="All glory to the Hypnotoad">
 
 It can set the HTTP headers to turn it into a
 [reverse proxy](https://mojolicious.org/perldoc/Mojolicious/Guides/Cookbook#Hypnotoad),
@@ -147,7 +147,7 @@ sub startup {
 ```
 <img style="float: left;vertical-align: top;" src="speedtest_with_StaticCache.png">
 page speeds are now **93** **!!!!**
-WOW!  It's [one faster](https://xkcd.com/670)! said Nutgel Tufty-tail 
+WOW!  It's [one faster](https://xkcd.com/670) ! said Nutgel Tufty-tail 
 and everyone in the forest cheered.
 
 And _that_, dear readers, is how the squirrel learned to store nuts for the winter
