@@ -148,7 +148,7 @@ sub startup {
 <img style="float: left;vertical-align: top;" src="speedtest_with_StaticCache.png">
 page speeds are now **93** **!!!!**
 WOW!  It's
-[one faster](https://xkcd.com/670/)
+[one faster](https://xkcd.com/670 "xkcd")
 said Nutgel Tufty-tail 
 and everyone in the forest cheered.
 
