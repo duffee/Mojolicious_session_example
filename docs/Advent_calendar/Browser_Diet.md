@@ -55,10 +55,13 @@ The forest creatures used the
 [Hypnotoad](https://github.com/mojolicious/mojo/wiki/Hypnotoad-prefork-web-server)
 web server that comes with Mojolicious to serve their pages.
 They found it a good fit for their arboreal production environment.
+![Hypnotoad image](https://www.mind-it.info/wp-content/uploads/2014/09/Hypnotoad.gif "All glory to the Hypnotoad")
 
 It can set the HTTP headers to turn it into a
 [reverse proxy](https://mojolicious.org/perldoc/Mojolicious/Guides/Cookbook#Hypnotoad),
-but a popular setup is sitting Hypnotoad behind Nginx or Apache/mod_proxy.
+but a popular setup is sitting Hypnotoad behind 
+[Nginx](https://www.mind-it.info/2014/09/27/running-hypnotoad-behind-nginx/)
+or Apache/mod_proxy.
 Those servers should let you play with the ```Expires``` header.
 But the Toad didn't _quite_ have what this particular rodent was looking for.
 
@@ -72,17 +75,17 @@ Plack::Response->header('Expires' => 'Tue, 25 Dec 2018 07:28:00 GMT');
 ```
 but I wouldn't know and neither did our narrator.
 
-## ... and _then_ there was a Unicorn
+## ... and _then_ there was a [Unicorn](https://mojolicious.org)
 
 Well, that was easy.  Just use the standard
 [Mojo::Headers](https://mojolicious.org/perldoc/Mojo/Headers#expires)
 module to set the ```Expires``` header.
 
-But, wait!  That sets it for a page which isn't fat at all.
+But, wait!  That sets it for a page which isn't that big at all.
 Our furry friend only wants to stop JavaScript files from reloading every single time
 which were killing the Sciuridae mobile experience.  Hmmmm.
 
-## ...  and _then_ there was a Rhino
+## ...  and _then_ there was a [Rhino](http://shop.oreilly.com/product/9780596805531.do)
 
 If the JavaScript lives in the `<head>` tag, then the page body won't be parsed
 until the script is downloaded.  Some people get around this by putting the script just
@@ -93,6 +96,7 @@ JavaScript is downloading.  These two
 [wise](https://flaviocopes.com/javascript-async-defer/)
 [owls](https://bitsofco.de/async-vs-defer/)
 can help decide which one to use.
+![JavaScript rhino image](https://camo.githubusercontent.com/0cb38fe074c27bbdab81e86e9c6deecab8b32152/68747470733a2f2f646576656c6f7065722e6d6f7a696c6c612e6f72672f406170692f64656b692f66696c65732f3833322f3d5268696e6f2e6a7067 "Mozilla's Rhino project")
 
 Tell your script to load after the main page
 with this
@@ -108,11 +112,12 @@ which produces
 If you want it in the `<head>`, you'll have to put it in your layout
 otherwise the template will do.
 
-## ... and finally, there was a Man in a Hat
+## ... and finally, there was a [Man in a Hat](https://metacpan.org/author/LDIDRY)
 
 "But the JavaScript needs to load **FIRST**!", squeaked the nut-botherer.
 
 Sigh - this really is one demanding Sciurus vulgaris.
+![Luc Didry gravatar](https://www.gravatar.com/avatar/32f1d8dfde253b32b55422094b575d34?s=130&d=identicon "Luc Didry")
 
 Well ... it _is_ Christmas, but you'll need to install the
 [StaticCache plugin](https://metacpan.org/pod/Mojolicious::Plugin::StaticCache)
@@ -142,7 +147,7 @@ sub startup {
 ```
 <img style="float: left;vertical-align: top;" src="speedtest_with_StaticCache.png">
 page speeds are now **93** **!!!!**
-WOW!  It's [one faster!](https://xkcd.com/670) said Nutgel Tufty-tail 
+WOW!  It's [one faster](https://xkcd.com/670)! said Nutgel Tufty-tail 
 and everyone in the forest cheered.
 
 And _that_, dear readers, is how the squirrel learned to store nuts for the winter
