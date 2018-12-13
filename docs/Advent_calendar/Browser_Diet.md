@@ -148,8 +148,8 @@ sub startup {
 <img style="float: left;vertical-align: top;" src="speedtest_with_StaticCache.png">
 page speeds are now **93** **!!!!**
 WOW!  It's
-[one faster](https://xkcd.com/670)
-! said Nutgel Tufty-tail 
+[one faster](https://xkcd.com/670/)
+said Nutgel Tufty-tail 
 and everyone in the forest cheered.
 
 And _that_, dear readers, is how the squirrel learned to store nuts for the winter
