@@ -70,7 +70,7 @@ sub startup {
 
   # Normal route to controller
   $r->get('/')->to('Tutorial#start');
-  $r->get('/')->to('Tutorial#login');
+  $r->get('/login')->to('Tutorial#login');
 }
 
 1;
