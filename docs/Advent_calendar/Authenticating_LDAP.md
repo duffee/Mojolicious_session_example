@@ -301,6 +301,8 @@ sub check_credentials {
         or warn("Couldn't connect to LDAP server $LDAP_server: $@"), return;
   my $message = $ldap->bind( $base_DN );
 
+  # Escape special chacarters in the username
+  $username =~ s/([*()\\\x{0}])/sprintf '\\%02x', ord($1)/ge;
   my $search = $ldap->search( base => $base_DN,
                               filter => join('=', $user_attr, $username),
                               attrs => [$user_id],
